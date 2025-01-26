@@ -6,6 +6,7 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const location = useLocation();
 
+
   return (
     <nav className="navbar">
       <div className="nav-content">
@@ -22,7 +23,7 @@ const Navigation = () => {
         </button>
 
         <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
-          <li>
+          <li onClick={() => setIsMenuOpen(false)}>
             <Link
               to="/"
               className={
@@ -32,7 +33,7 @@ const Navigation = () => {
               Home
             </Link>
           </li>
-          <li>
+          <li onClick={() => setIsMenuOpen(false)}>
             <Link
               to="/projects"
               className={
@@ -44,7 +45,7 @@ const Navigation = () => {
               Projects
             </Link>
           </li>
-          <li>
+          <li onClick={() => setIsMenuOpen(false)}>
             <Link
               to="/about"
               className={
