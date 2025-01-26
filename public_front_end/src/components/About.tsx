@@ -29,7 +29,7 @@ const About = () => (
             </ul>
           </div>
         </div>
-        <a href="mailto:contact@example.com" className="button button-primary">
+        <a href="mailto:ms0556727820@gmail.com" className="button button-primary">
           Get in Touch
           <Mail size={18} />
         </a>
