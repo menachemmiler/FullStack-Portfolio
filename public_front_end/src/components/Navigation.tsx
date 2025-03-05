@@ -12,7 +12,7 @@ const Navigation = () => {
       <div className="nav-content">
         <Link to="/" className="nav-logo">
           <MessageSquare size={24} />
-          <span>Portfolio</span>
+          <span>Portfolio</span> 
         </Link>
 
         <button

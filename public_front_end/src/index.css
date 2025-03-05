@@ -430,6 +430,7 @@
   .left{
     width: 80%;
     display: flex;
+    /* background-color: yellow; */
   }
 
   .right{
@@ -437,6 +438,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color: red; */
+    height: 100%;
   }
 }
 

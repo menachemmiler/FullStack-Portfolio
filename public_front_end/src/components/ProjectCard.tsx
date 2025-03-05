@@ -13,7 +13,7 @@ const ProjectCard = ({ project }: Props) => {
       </div>
       <div className="project-content">
         <div>
-          <h3>Project Title {`${project.title}`}</h3>
+          <h3>{`${project.title}`}</h3>
           <p>
             A brief description of the project and the technologies used in its
             development.
@@ -22,28 +22,28 @@ const ProjectCard = ({ project }: Props) => {
 
         <div className="project-links">
           <div className="left">
-            <a href={`${project.liveLink}`} className="button">
+            <a target="_blank" href={`${project.liveLink}`} className="button">
               View Project <ExternalLink size={16} />
             </a>
             {project.githubAll ? (
-              <a href={`${project.githubAll}`} className="button">
+              <a target="_blank" href={`${project.githubAll}`} className="button">
                 View Code <Github size={16} />
               </a>
             ) : project.githubClient && project.githubServer ? (
               <>
-                <a href={`${project.githubClient}`} className="button">
-                  View Code Client <Code size={16} />
+                <a target="_blank" href={`${project.githubClient}`} className="button">
+                  View Code Client <Code size={16} /> 
                 </a>{" "}
-                <a href={`${project.githubServer}`} className="button">
+                <a target="_blank" href={`${project.githubServer}`} className="button">
                   View Code Server <Server size={16} />
                 </a>
               </>
             ) : project.githubServer ? (
-              <a href={`${project.githubServer}`} className="button">
+              <a target="_blank" href={`${project.githubServer}`} className="button">
                 View Code Server <Server size={16} />
               </a>
             ) : project.githubClient ? (
-              <a href={`${project.githubClient}`} className="button">
+              <a target="_blank" href={`${project.githubClient}`} className="button">
                 View Code Client <Code size={16} />
               </a>
             ) : (
