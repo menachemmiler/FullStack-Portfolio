@@ -2,8 +2,18 @@ import { Schema, Document, model } from "mongoose";
 
 
 
+export interface ProjectData {
+  projectName: string;
+  shortDescription: string;
+  longDescription: string;
+  image: string;
+  link: string;
+}
+
+
 
 export interface IProject extends Document {
+  _id: string;
   projectName: string;
   shortDescription: string;
   longDescription: string;

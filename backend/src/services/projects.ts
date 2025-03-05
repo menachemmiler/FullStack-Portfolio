@@ -16,6 +16,8 @@ export const createNewProjectService = async (project: IProject) => {
   }
 };
 
+
+
 export const getAllProjectsService = async () => {
   try {
     const allProjects = await Project.find();
@@ -25,3 +27,14 @@ export const getAllProjectsService = async () => {
     throw new Error(`${err.message}`);
   }
 };
+
+
+//seed
+export const seedCreateProjectsService = async (projects: IProject[]) => {
+  try {
+    return await Project.insertMany(projects);
+  } catch (err: any) {
+    console.log(err);
+    throw new Error(`${err.message}`);
+  }
+}

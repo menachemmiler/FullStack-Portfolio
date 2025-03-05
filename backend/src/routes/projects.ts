@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
-import { createNewProjectService, getAllProjectsService } from "../services/projects";
+import { createNewProjectService, getAllProjectsService, seedCreateProjectsService } from "../services/projects";
+import { IProject, ProjectData } from "../models/project";
 
 
 export const createNewProject = async (req: Request, res: Response) => {
@@ -23,3 +24,31 @@ export const getAllProjects = async (req: Request, res: Response) => {
     res.sendStatus(400);
   }
 };
+
+
+const listProjects: ProjectData[] = [
+  {
+    projectName: "project 1",
+    shortDescription: "short description",
+    longDescription: "long description",
+    image: "image",
+    link: "link",
+  },
+  {
+    projectName: "project 2",
+    shortDescription: "short description",
+    longDescription: "long description",
+    image: "image",
+    link: "link",
+  },
+];
+
+export const seedTocreateProjects = async (req: Request, res: Response) => {
+  try {
+    const newProjects = await seedCreateProjectsService(listProjects as IProject[]);
+    res.status(201).json(newProjects);
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json(err.message);
+  }
+}

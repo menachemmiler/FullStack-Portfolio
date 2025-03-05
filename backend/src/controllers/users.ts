@@ -4,10 +4,8 @@ import verifyUser from "../middlewares/verifyUser";
 
 const router = Router();
 
-// router.get("/", verifyUser, getAllUsers);
 
 router.get("/", getAllUsers);//בשביל הסביבת פיתוח
-
 
 router.post("/sid", sid);
 
