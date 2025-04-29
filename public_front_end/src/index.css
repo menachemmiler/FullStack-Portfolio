@@ -116,7 +116,6 @@
     background: white;
     width: 200px;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     gap: 2rem;
     transform: translateX(100%);
@@ -169,8 +168,6 @@
     padding: 0rem;
     min-height: 300px;
     max-height: 300px;
-    /* background-color: rgb(172, 132, 209); */
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -190,21 +187,15 @@
     min-width: 100%;
     max-width: 100%;
     display: inline-block;
-
     display: flex;
     justify-content: space-between;
-
-    /* background-color: rgb(233, 169, 169); */
     .left {
-      /* background-color: #2d3436; */
       max-width: 90%;
       min-width: 30%;
       display: flex;
       flex-wrap: wrap;
     }
-
     .right {
-      /* background-color: #0984e3; */
       min-width: 30%;
       max-width: 30%;
       display: flex;
@@ -359,7 +350,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
   width: 40%;
-  /* min-width: 600px; */
   height: 600px;
 }
 
@@ -388,12 +378,9 @@
 .project-content {
   padding: 1.5rem;
   height: 40%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  /* background-color: rgb(201, 201, 123); */
 }
 
 .project-content h3 {
@@ -408,11 +395,9 @@
 
 .project-links {
   display: flex;
-  /* background-color: #00b894; */
   .left {
     width: 80%;
     display: flex;
-    /* background-color: yellow; */
   }
 
   .right {
@@ -420,7 +405,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: red; */
     height: 100%;
   }
 }

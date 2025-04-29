@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Linkedin, Mail, WheatIcon } from "lucide-react";
+import { ExternalLink, Github, Linkedin, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Home = () => (
