@@ -1,8 +1,11 @@
 import { Request, Response } from "express";
 
-import { createNewProjectService, getAllProjectsService, seedCreateProjectsService } from "../services/projects";
-import { IProject, ProjectData } from "../models/project";
-
+import {
+  createNewProjectService,
+  getAllProjectsService,
+  seedCreateProjectsService,
+} from "../services/projects";
+import { IProject, ProjectData } from "../types/projects";
 
 export const createNewProject = async (req: Request, res: Response) => {
   try {
@@ -12,8 +15,7 @@ export const createNewProject = async (req: Request, res: Response) => {
     console.log(err);
     res.status(400).json(err.message);
   }
-}
-
+};
 
 export const getAllProjects = async (req: Request, res: Response) => {
   try {
@@ -25,30 +27,31 @@ export const getAllProjects = async (req: Request, res: Response) => {
   }
 };
 
-
 const listProjects: ProjectData[] = [
   {
-    projectName: "project 1",
-    shortDescription: "short description",
-    longDescription: "long description",
+    title: "project 1",
+    description: "short description",
+    fullDescription: "long description",
     image: "image",
-    link: "link",
+    liveLink: "link",
   },
   {
-    projectName: "project 2",
-    shortDescription: "short description",
-    longDescription: "long description",
+    title: "project 2",
+    description: "short description",
+    fullDescription: "long description",
     image: "image",
-    link: "link",
+    liveLink: "link",
   },
 ];
 
-export const seedTocreateProjects = async (req: Request, res: Response) => {
+export const seedTocreateProjects = async (_req: Request, res: Response) => {
   try {
-    const newProjects = await seedCreateProjectsService(listProjects as IProject[]);
+    const newProjects = await seedCreateProjectsService(
+      listProjects as IProject[]
+    );
     res.status(201).json(newProjects);
   } catch (err: any) {
     console.log(err);
     res.status(400).json(err.message);
   }
-}
+};

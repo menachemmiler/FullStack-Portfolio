@@ -17,19 +17,24 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: "*", // כתובת הלקוח
+    origin: "http://localhost:3050", // כתובת הלקוח
     methods: "*",
   },
 });
-import "./socket/io";//מייבא את הקובץ של הסוקטים
+import "./socket/io"; //מייבא את הקובץ של הסוקטים
+
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3050",
+    credentials: true,
+  })
+);
 
 app.use("/api/users", usersController);
 
 app.use("/api/projects", productsController);
-
 
 server.listen(PORT, () => {
   console.log(`Server started, Visit "http://localhost:${PORT}"`);

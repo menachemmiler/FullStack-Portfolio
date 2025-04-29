@@ -1,12 +1,12 @@
-import { IProject } from "../models/project";
 import Project from "../models/project";
+import { IProject } from "../types/projects";
 
 
 export const createNewProjectService = async (project: IProject) => {
   try {
-    const { projectName, image, link, longDescription, shortDescription } = project;
-    if (!projectName || !image || !link || !longDescription || !shortDescription) {
-      throw new Error("Missing project data, [projectName, image, link, longDescription, shortDescription] is require");
+    const { title, image, liveLink, fullDescription, description } = project;
+    if (!title || !image || !liveLink || !fullDescription || !description) {
+      throw new Error("Missing project data, [title, image, liveLink, fullDescription, description] is require");
     }
     const newProject = new Project(project);
     return await newProject.save();

@@ -1,13 +1,12 @@
 import { Router } from "express";
-import { getAllUsers, login, profile, register, sid } from "../routes/users";
+import { getAllUsers, login, profile, register, seed } from "../routes/users";
 import verifyUser from "../middlewares/verifyUser";
 
 const router = Router();
 
+router.get("/", getAllUsers); //בשביל הסביבת פיתוח
 
-router.get("/", getAllUsers);//בשביל הסביבת פיתוח
-
-router.post("/sid", sid);
+router.post("/seed", seed);
 
 router.post("/login", login);
 

@@ -39,8 +39,7 @@ export const profile = async (req: Request, res: Response) => {
   }
 };
 
-
-export const sid = async (req: Request, res: Response) => {
+export const seed = async (_req: Request, res: Response) => {
   try {
     await initDatabase();
     res.sendStatus(201);

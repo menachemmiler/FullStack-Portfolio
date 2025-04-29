@@ -1,8 +1,8 @@
 import { Code, ExternalLink, Github, Server } from "lucide-react";
-import { Project } from "./Projects";
+import { IProject } from "../utils/interfaces";
 
 interface Props {
-  project: Project;
+  project: IProject;
 }
 
 const ProjectCard = ({ project }: Props) => {
@@ -26,24 +26,44 @@ const ProjectCard = ({ project }: Props) => {
               View Project <ExternalLink size={16} />
             </a>
             {project.githubAll ? (
-              <a target="_blank" href={`${project.githubAll}`} className="button">
+              <a
+                target="_blank"
+                href={`${project.githubAll}`}
+                className="button"
+              >
                 View Code <Github size={16} />
               </a>
             ) : project.githubClient && project.githubServer ? (
               <>
-                <a target="_blank" href={`${project.githubClient}`} className="button">
-                  View Code Client <Code size={16} /> 
+                <a
+                  target="_blank"
+                  href={`${project.githubClient}`}
+                  className="button"
+                >
+                  View Code Client <Code size={16} />
                 </a>{" "}
-                <a target="_blank" href={`${project.githubServer}`} className="button">
+                <a
+                  target="_blank"
+                  href={`${project.githubServer}`}
+                  className="button"
+                >
                   View Code Server <Server size={16} />
                 </a>
               </>
             ) : project.githubServer ? (
-              <a target="_blank" href={`${project.githubServer}`} className="button">
+              <a
+                target="_blank"
+                href={`${project.githubServer}`}
+                className="button"
+              >
                 View Code Server <Server size={16} />
               </a>
             ) : project.githubClient ? (
-              <a target="_blank" href={`${project.githubClient}`} className="button">
+              <a
+                target="_blank"
+                href={`${project.githubClient}`}
+                className="button"
+              >
                 View Code Client <Code size={16} />
               </a>
             ) : (

@@ -1,38 +1,15 @@
-import { Schema, Document, model } from "mongoose";
-
-
-
-export interface ProjectData {
-  projectName: string;
-  shortDescription: string;
-  longDescription: string;
-  image: string;
-  link: string;
-}
-
-
-
-export interface IProject extends Document {
-  _id: string;
-  projectName: string;
-  shortDescription: string;
-  longDescription: string;
-  image: string;
-  link: string
-  clientGit?: string;
-  serverGit?: string;
-  generalGit?: string;
-}
+import { Schema, model } from "mongoose";
+import { IProject } from "../types/projects";
 
 const projectSchema = new Schema<IProject>({
-  projectName: { type: String, required: true },
-  shortDescription: { type: String, required: true },
-  longDescription: { type: String, required: true },
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  fullDescription: { type: String, required: true },
   image: { type: String, required: true },
-  link: { type: String, required: true },
-  clientGit: { type: String},
-  serverGit: { type: String },
-  generalGit: { type: String },
+  githubClient: { type: String },
+  githubServer: { type: String },
+  githubAll: { type: String },
+  liveLink: { type: String },
 });
 
 export default model<IProject>("Project", projectSchema);
