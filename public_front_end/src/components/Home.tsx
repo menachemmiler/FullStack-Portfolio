@@ -51,7 +51,7 @@ const Home = () => (
             <Github size={24} />
           </a>
           <a
-            href="https://www.linkedin.com/in/meni-miller-165922335/"
+            href="https://www.linkedin.com/in/meni-miller/"
             target="_blank"
             rel="noopener noreferrer"
           >
