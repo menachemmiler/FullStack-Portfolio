@@ -1,19 +1,23 @@
 import { Router } from "express";
-// import verifyUser from "../middlewares/verifyUser";
 import {
   createNewProject,
+  deleteProject,
   getAllProjects,
   seedTocreateProjects,
+  updateProject,
 } from "../routes/projects";
+import verifyUser from "../middlewares/verifyUser";
 
 const router = Router();
 
 router.get("/", getAllProjects); //בשביל הסביבת פיתוח
 
-// router.post("/", verifyUser, createNewProject);
+router.post("/", verifyUser, createNewProject);
 
-router.post("/", createNewProject);
+router.put("", verifyUser, updateProject);
 
-router.post("/seed", seedTocreateProjects);
+router.delete("/:id", verifyUser, deleteProject);
+
+router.post("/seed", seedTocreateProjects); // בשביל סביבת פיתוח
 
 export default router;

@@ -1,12 +1,13 @@
 import Project from "../models/project";
-import { IProject } from "../types/projects";
-
+import { IProject, ProjectDocument } from "../types/projects";
 
 export const createNewProjectService = async (project: IProject) => {
   try {
     const { title, image, liveLink, fullDescription, description } = project;
     if (!title || !image || !liveLink || !fullDescription || !description) {
-      throw new Error("Missing project data, [title, image, liveLink, fullDescription, description] is require");
+      throw new Error(
+        "Missing project data, [title, image, liveLink, fullDescription, description] is require"
+      );
     }
     const newProject = new Project(project);
     return await newProject.save();
@@ -15,8 +16,6 @@ export const createNewProjectService = async (project: IProject) => {
     throw new Error("Can't create new project: " + err.message);
   }
 };
-
-
 
 export const getAllProjectsService = async () => {
   try {
@@ -28,7 +27,6 @@ export const getAllProjectsService = async () => {
   }
 };
 
-
 //seed
 export const seedCreateProjectsService = async (projects: IProject[]) => {
   try {
@@ -37,4 +35,45 @@ export const seedCreateProjectsService = async (projects: IProject[]) => {
     console.log(err);
     throw new Error(`${err.message}`);
   }
-}
+};
+
+export const updateProjectService = async (project: ProjectDocument) => {
+  try {
+    const { title, image, liveLink, fullDescription, description, _id } =
+      project;
+    if (
+      !title ||
+      !image ||
+      !liveLink ||
+      !fullDescription ||
+      !description ||
+      !_id
+    ) {
+      throw new Error(
+        "Missing project data, [title, image, liveLink, fullDescription, description, _id] is require"
+      );
+    }
+    const updatedProject = await Project.findByIdAndUpdate(_id, project);
+    return updatedProject;
+  } catch (err: any) {
+    console.log(err);
+    throw new Error("Can't update the project: " + err.message);
+  }
+};
+
+export const deleteProjectService = async (project: ProjectDocument) => {
+  try {
+    if (
+      !project._id
+    ) {
+      throw new Error(
+        "Missing project data,  _id is require"
+      );
+    }
+    const deletedProject = await Project.deleteOne({_id: project._id});
+    return deletedProject;
+  } catch (err: any) {
+    console.log(err);
+    throw new Error("Can't update the project: " + err.message);
+  }
+};

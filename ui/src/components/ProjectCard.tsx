@@ -14,10 +14,7 @@ const ProjectCard = ({ project }: Props) => {
       <div className="project-content">
         <div>
           <h3>{`${project.title}`}</h3>
-          <p>
-            A brief description of the project and the technologies used in its
-            development.
-          </p>
+          <p>{`${project.description}`}</p>
         </div>
 
         <div className="project-links">
@@ -73,7 +70,7 @@ const ProjectCard = ({ project }: Props) => {
           <div className="right">
             <button
               onClick={() => {
-                alert("about the project");
+                alert(`${project.fullDescription}`);
               }}
               className="button button-outline"
             >

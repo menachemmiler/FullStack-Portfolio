@@ -2,8 +2,10 @@ import { Request, Response } from "express";
 
 import {
   createNewProjectService,
+  deleteProjectService,
   getAllProjectsService,
   seedCreateProjectsService,
+  updateProjectService,
 } from "../services/projects";
 import { IProject, ProjectData } from "../types/projects";
 
@@ -50,6 +52,26 @@ export const seedTocreateProjects = async (_req: Request, res: Response) => {
       listProjects as IProject[]
     );
     res.status(201).json(newProjects);
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json(err.message);
+  }
+};
+
+export const updateProject = async (req: Request, res: Response) => {
+  try {
+    const updatedProject = await updateProjectService(req.body);
+    res.status(201).json(updatedProject);
+  } catch (err: any) {
+    console.log(err);
+    res.status(400).json(err.message);
+  }
+};
+
+export const deleteProject = async (req: Request, res: Response) => {
+  try {
+    const deletedProject = await deleteProjectService(req.body);
+    res.status(200).json(deletedProject);
   } catch (err: any) {
     console.log(err);
     res.status(400).json(err.message);

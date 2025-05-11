@@ -5,7 +5,6 @@ import usersController from "./controllers/users";
 import productsController from "./controllers/projects";
 import { connectToMongo } from "./config/db";
 
-
 const PORT = process.env.PORT || 3000;
 
 import http from "http";
@@ -23,8 +22,6 @@ export const io = new Server(server, {
   },
 });
 import "./socket/io"; //מייבא את הקובץ של הסוקטים
-
-
 
 app.use(express.json());
 app.use(
