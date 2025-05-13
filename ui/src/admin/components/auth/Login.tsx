@@ -22,7 +22,7 @@ export default function Login() {
   }, [user, navigate]);
 
   return (
-    <div className="login">
+    <div className="page">
       <input
         type="text"
         placeholder="User Name"

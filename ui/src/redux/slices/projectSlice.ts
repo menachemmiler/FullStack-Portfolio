@@ -31,6 +31,26 @@ export const getProjects = createAsyncThunk(
   }
 );
 
+
+export const addNewProject = createAsyncThunk(
+  "project/addNewProject",
+    async (newProject: IProject, thunkApi) => {
+    try {
+      const res = await api.post("/api/projects");
+      if (res.status != 200) {
+        return thunkApi.rejectWithValue(
+          "Can't add project, please try again"
+        );
+      }
+      return thunkApi.fulfillWithValue(res.data);
+    } catch (err: any) {
+      return thunkApi.rejectWithValue(
+        `Can't add project, please try again ${err.message}`
+      );
+    }
+  }
+);
+
 const projectsSlice = createSlice({
   name: "projects",
   initialState,

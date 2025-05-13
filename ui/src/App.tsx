@@ -4,7 +4,7 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Navigation from "./components/Navigation";
 import ValidateUser from "./admin/components/ValidateUser";
-import Test from "./admin/components/Test";
+import AddProject from "./admin/components/AddProject";
 import Login from "./admin/components/auth/Login";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
             path="/admin"
             element={
               <ValidateUser>
-                <Test />
+                <AddProject />
               </ValidateUser>
             }
           />
