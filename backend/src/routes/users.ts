@@ -22,7 +22,7 @@ export const register = async (
   res: Response
 ) => {
   try {
-    console.log("req.body= ", req.body);
+    // console.log("req.body= ", req.body);
     const freshlyCreatedUser = await createNewUser(req.body);
     res.status(201).json(freshlyCreatedUser);
   } catch (err: any) {

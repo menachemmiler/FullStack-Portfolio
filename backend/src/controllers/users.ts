@@ -6,7 +6,7 @@ const router = Router();
 
 router.get("/", getAllUsers); //בשביל הסביבת פיתוח
 
-router.post("/seed", seed);
+router.post("/seed", seed);// בשביל הסביבת פיתוח
 
 router.post("/login", login);
 
