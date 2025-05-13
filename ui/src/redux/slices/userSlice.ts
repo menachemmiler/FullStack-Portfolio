@@ -4,6 +4,7 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import { DataStatus, IUser, userState } from "../../utils/interfaces";
+import { api } from "../../utils/axios";
 
 const initialState: userState = {
   error: null,
@@ -14,20 +15,13 @@ const initialState: userState = {
 
 export const fetchLogin = createAsyncThunk(
   "user/login",
-  async (user: { username: string; password: string }, thunkApi) => {
+  async (user: IUser, thunkApi) => {
     try {
-      const res = await fetch("http://localhost:4000/api/users/login", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
-      // console.log({ res });
+      const res = await api.post("/api/users/login", JSON.stringify(user));
       if (res.status != 200) {
         return thunkApi.rejectWithValue("Can't login, please try again");
       }
-      const data = await res.json();
+      const data = await res.data;
       localStorage.setItem("Authorization", data.token);
       return thunkApi.fulfillWithValue(data);
     } catch (err: any) {
@@ -38,58 +32,53 @@ export const fetchLogin = createAsyncThunk(
   }
 );
 
-export const fetchRegister = createAsyncThunk(
-  "user/register",
-  async (
-    user: { username: string; password: string; isAdmin: boolean },
-    thunkApi
-  ) => {
-    try {
-      console.log(JSON.stringify(user));
-      const res = await fetch("http://localhost:4000/api/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
-      console.log({ res });
-      if (res.status != 201) {
-        return thunkApi.rejectWithValue(
-          "Can't create new user, please try again"
-        );
-      }
-      const data = await res.json();
-      console.log({ data });
-      return thunkApi.fulfillWithValue(data);
-    } catch (err) {
-      return thunkApi.rejectWithValue(
-        "Can't create new user, please try again"
-      );
-    }
-  }
-);
+// export const fetchRegister = createAsyncThunk(
+//   "user/register",
+//   async (
+//     user: { username: string; password: string; isAdmin: boolean },
+//     thunkApi
+//   ) => {
+//     try {
+//       console.log(JSON.stringify(user));
+//       const res = await fetch("http://localhost:4000/api/users/register", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(user),
+//       });
+//       console.log({ res });
+//       if (res.status != 201) {
+//         return thunkApi.rejectWithValue(
+//           "Can't create new user, please try again"
+//         );
+//       }
+//       const data = await res.json();
+//       console.log({ data });
+//       return thunkApi.fulfillWithValue(data);
+//     } catch (err) {
+//       return thunkApi.rejectWithValue(
+//         "Can't create new user, please try again"
+//       );
+//     }
+//   }
+// );
 
 export const getProfile = createAsyncThunk(
   "user/profile",
   async (_, thunkApi) => {
     try {
-      const res = await fetch("http://localhost:4000/api/users/profile", {
-        method: "GET",
+      const res = await api.get("/api/users/profile", {
         headers: {
-          "Content-Type": "application/json",
           Authorization: localStorage.getItem("Authorization")!,
         },
       });
-      // console.log({ res });
       if (res.status != 200) {
         return thunkApi.rejectWithValue(
           "Can't find the user, please try again"
         );
       }
-      const data = await res.json();
-      // console.log({ data });
-      return thunkApi.fulfillWithValue(data);
+      return thunkApi.fulfillWithValue(res.data);
     } catch (err: any) {
       return thunkApi.rejectWithValue(
         `Can't find the user, please try again ${err.message}`
@@ -97,8 +86,6 @@ export const getProfile = createAsyncThunk(
     }
   }
 );
-
-
 
 const userSlice = createSlice({
   name: "user",
@@ -120,11 +107,9 @@ const userSlice = createSlice({
         state.user = null;
       })
       .addCase(fetchLogin.fulfilled, (state, action) => {
-        // console.log({ action });
         state.status = DataStatus.SUCCESS;
         state.error = null;
         state.user = action.payload as unknown as IUser;
-        // console.log(state.user);
       })
       .addCase(fetchLogin.rejected, (state, action) => {
         state.status = DataStatus.FAILED;
@@ -135,7 +120,7 @@ const userSlice = createSlice({
         state.status = DataStatus.SUCCESS;
         state.error = null;
         state.user = action.payload as unknown as IUser;
-      })
+      });
   },
 });
 

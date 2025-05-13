@@ -1,10 +1,21 @@
-import { useProjects } from "../hooks/useProjects";
+import { useSelector } from "react-redux";
 import ProjectCard from "./ProjectCard";
+import { RootState, useAppDispatch } from "../redux/store";
+import { DataStatus } from "../utils/interfaces";
+import { useEffect } from "react";
+import { getProjects } from "../redux/slices/projectSlice";
 
 const Projects = () => {
-  const { projects, loading, error } = useProjects();
+  const { error, projects, status } = useSelector(
+    (state: RootState) => state.projects
+  );
+  const dispatch = useAppDispatch();
 
-  if (loading) return <p>Loading...</p>;
+  useEffect(() => {
+    dispatch(getProjects());
+  }, []);
+
+  if (status == DataStatus.LOADING) return <p>Loading...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
   return (
     <div className="page">
