@@ -23,7 +23,7 @@ export const userLogin = async (user: LoginDto) => {
       },
       process.env.JWT_SECRET!,
       {
-        expiresIn: "10m",
+        expiresIn: "100m",
       }
     );
     return { ...userFromDatabase, token, password: "*******" };

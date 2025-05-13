@@ -1,7 +1,8 @@
 import Project from "../models/project";
-import { IProject, ProjectDocument } from "../types/projects";
+import { IProject, IProjectDTO, ProjectDocument } from "../types/projects";
+import { createNewImage } from "./images";
 
-export const createNewProjectService = async (project: IProject) => {
+export const createNewProjectService = async (project: IProjectDTO) => {
   try {
     const { title, image, liveLink, fullDescription, description } = project;
     if (!title || !image || !liveLink || !fullDescription || !description) {
@@ -9,8 +10,18 @@ export const createNewProjectService = async (project: IProject) => {
         "Missing project data, [title, image, liveLink, fullDescription, description] is require"
       );
     }
-    const newProject = new Project(project);
-    return await newProject.save();
+    const uploadResponse = await createNewImage({
+      title,
+      description,
+      file: image,
+    });
+    const uploadedImage = uploadResponse.image;
+    if (!uploadedImage?.url) {
+      throw new Error("Image upload failed — no URL returned");
+    }
+    const newProject = new Project({ ...project, image: uploadedImage.url });
+    const savedProject = await newProject.save();
+    return savedProject;
   } catch (err: any) {
     console.log(err);
     throw new Error("Can't create new project: " + err.message);
@@ -63,14 +74,10 @@ export const updateProjectService = async (project: ProjectDocument) => {
 
 export const deleteProjectService = async (project: ProjectDocument) => {
   try {
-    if (
-      !project._id
-    ) {
-      throw new Error(
-        "Missing project data,  _id is require"
-      );
+    if (!project._id) {
+      throw new Error("Missing project data,  _id is require");
     }
-    const deletedProject = await Project.deleteOne({_id: project._id});
+    const deletedProject = await Project.deleteOne({ _id: project._id });
     return deletedProject;
   } catch (err: any) {
     console.log(err);

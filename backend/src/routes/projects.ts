@@ -11,7 +11,8 @@ import { IProject, ProjectData } from "../types/projects";
 
 export const createNewProject = async (req: Request, res: Response) => {
   try {
-    const newProject = await createNewProjectService(req.body);
+  //  console.log("req.file", req.file);//זה לא מזוהה
+    const newProject = await createNewProjectService({...req.body, image: req.file});
     res.status(201).json(newProject);
   } catch (err: any) {
     console.log(err);
