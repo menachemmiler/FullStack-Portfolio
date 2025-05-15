@@ -11,7 +11,7 @@ const AddProject = () => {
     title: "",
     description: "",
     fullDescription: "",
-    image: "",
+    image: new File([], "placeholder.txt"),
     liveLink: "",
     backendLink: "",
   });
@@ -19,13 +19,24 @@ const AddProject = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      console.log({ project });
+      const formData = new FormData();
+      formData.append("title", project.title);
+      formData.append("description", project.description);
+      formData.append("fullDescription", project.fullDescription);
+      formData.append("image", project.image);
+      formData.append("liveLink", project.liveLink);
+      formData.append(
+        "backendLink",
+        project.backendLink ? project.backendLink : ""
+      );
+      console.log({ formData });
       const res = await fetch("http://localhost:4000/api/projects", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Authorization: localStorage.getItem("Authorization")!,
         },
-        body: JSON.stringify(project),
+        body: formData,
       });
       if (res.status != 201) {
         throw new Error("Can't create project, please try again");
@@ -80,11 +91,15 @@ const AddProject = () => {
                 required
               />
               <input
-                type="text"
+                type="file"
                 placeholder="Project Image"
-                value={project.image}
                 onChange={(e) =>
-                  setProject({ ...project, image: e.target.value })
+                  setProject({
+                    ...project,
+                    image: e.target.files
+                      ? e.target.files[0]
+                      : new File([], ""),
+                  })
                 }
                 required
               />
@@ -104,7 +119,6 @@ const AddProject = () => {
                 onChange={(e) =>
                   setProject({ ...project, backendLink: e.target.value })
                 }
-                required
               />
               <button type="submit">Create Project</button>
             </form>

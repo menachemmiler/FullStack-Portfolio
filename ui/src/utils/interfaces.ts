@@ -15,7 +15,7 @@ export interface IProjectForm {
   title: string;
   description: string;
   fullDescription: string;
-  image: string;
+  image: File;
   liveLink: string;
   backendLink?: string;
   githubClient?: string;
