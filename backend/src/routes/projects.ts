@@ -37,6 +37,7 @@ const listProjects: ProjectData[] = [
     fullDescription: "long description",
     image: "image",
     liveLink: "link",
+    backendLink: "link",
   },
   {
     title: "project 2",
@@ -44,6 +45,7 @@ const listProjects: ProjectData[] = [
     fullDescription: "long description",
     image: "image",
     liveLink: "link",
+    backendLink: "link",
   },
 ];
 

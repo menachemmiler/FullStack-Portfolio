@@ -6,6 +6,7 @@ const projectSchema = new Schema<IProject>({
   description: { type: String, required: true },
   fullDescription: { type: String, required: true },
   image: { type: String, required: true },
+  backendLink: { type: String, required: true },
   githubClient: { type: String },
   githubServer: { type: String },
   githubAll: { type: String },

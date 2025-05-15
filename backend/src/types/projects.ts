@@ -3,6 +3,7 @@ export interface ProjectData {
   description: string;
   fullDescription: string;
   image: string;
+  backendLink: string;
   liveLink?: string;
 }
 
@@ -11,6 +12,7 @@ export interface IProject extends Document {
   description: string;
   fullDescription: string;
   image: string;
+  backendLink: string;
   githubClient?: string;
   githubServer?: string;
   githubAll?: string;
@@ -22,6 +24,7 @@ export interface IProjectDTO {
   description: string;
   fullDescription: string;
   image: Express.Multer.File;
+  backendLink: string;
   githubClient?: string;
   githubServer?: string;
   githubAll?: string;

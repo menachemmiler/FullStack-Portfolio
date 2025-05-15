@@ -11,7 +11,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    // To check if it is already connected
     dispatch(getProfile());
   }, []);
 

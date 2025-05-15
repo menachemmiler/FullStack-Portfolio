@@ -13,6 +13,7 @@ const AddProject = () => {
     fullDescription: "",
     image: "",
     liveLink: "",
+    backendLink: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,47 +51,53 @@ const AddProject = () => {
         <div className="add-project">
           <h1>
             Hello {user.username}
-            <input
-              type="text"
-              placeholder="Project Title"
-              value={project.title}
-              onChange={(e) =>
-                setProject({ ...project, title: e.target.value })
-              }
-            />
-            <input
-              type="text"
-              placeholder="Project Description"
-              value={project.description}
-              onChange={(e) =>
-                setProject({ ...project, description: e.target.value })
-              }
-            />
-            <input
-              type="text"
-              placeholder="Project Full Description"
-              value={project.fullDescription}
-              onChange={(e) =>
-                setProject({ ...project, fullDescription: e.target.value })
-              }
-            />
-            <input
-              type="text"
-              placeholder="Project Image"
-              value={project.image}
-              onChange={(e) =>
-                setProject({ ...project, image: e.target.value })
-              }
-            />
-            <input
-              type="text"
-              placeholder="Project Live Link"
-              value={project.liveLink}
-              onChange={(e) =>
-                setProject({ ...project, liveLink: e.target.value })
-              }
-            />
-            <button onClick={handleSubmit}>Create Project</button>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Project Title"
+                value={project.title}
+                onChange={(e) =>
+                  setProject({ ...project, title: e.target.value })
+                }
+                required
+              />
+              <input
+                type="text"
+                placeholder="Project Description"
+                value={project.description}
+                onChange={(e) =>
+                  setProject({ ...project, description: e.target.value })
+                }
+                required
+              />
+              <input
+                type="text"
+                placeholder="Project Full Description"
+                value={project.fullDescription}
+                onChange={(e) =>
+                  setProject({ ...project, fullDescription: e.target.value })
+                }
+              />
+              <input
+                type="text"
+                placeholder="Project Image"
+                value={project.image}
+                onChange={(e) =>
+                  setProject({ ...project, image: e.target.value })
+                }
+                required
+              />
+              <input
+                type="text"
+                placeholder="Project Live Link"
+                value={project.liveLink}
+                onChange={(e) =>
+                  setProject({ ...project, liveLink: e.target.value })
+                }
+                required
+              />
+              <button type="submit">Create Project</button>
+            </form>
           </h1>
         </div>
       </div>
