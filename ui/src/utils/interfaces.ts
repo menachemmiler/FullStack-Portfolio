@@ -4,7 +4,7 @@ export interface IProject {
   description: string;
   fullDescription: string;
   image: string;
-  backendLink: string;
+  backendLink?: string;
   githubClient?: string;
   githubServer?: string;
   githubAll?: string;
@@ -17,7 +17,7 @@ export interface IProjectForm {
   fullDescription: string;
   image: string;
   liveLink: string;
-  backendLink: string;
+  backendLink?: string;
   githubClient?: string;
   githubServer?: string;
   githubAll?: string;

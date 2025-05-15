@@ -4,10 +4,10 @@ import { createNewImage } from "./images";
 
 export const createNewProjectService = async (project: IProjectDTO) => {
   try {
-    const { title, image, liveLink, fullDescription, description, backendLink } = project;
-    if (!title || !image || !liveLink || !fullDescription || !description || !backendLink) {
+    const { title, image, liveLink, fullDescription, description } = project;
+    if (!title || !image || !liveLink || !fullDescription || !description) {
       throw new Error(
-        "Missing project data, [title, image, liveLink, fullDescription, description, backendLink] is require"
+        "Missing project data, [title, image, liveLink, fullDescription, description] is require"
       );
     }
     const uploadResponse = await createNewImage({
@@ -47,7 +47,7 @@ export const seedCreateProjectsService = async (projects: IProject[]) => {
 
 export const updateProjectService = async (project: ProjectDocument) => {
   try {
-    const { title, image, liveLink, fullDescription, description, _id , backendLink} =
+    const { title, image, liveLink, fullDescription, description, _id } =
       project;
     if (
       !title ||
@@ -56,10 +56,9 @@ export const updateProjectService = async (project: ProjectDocument) => {
       !fullDescription ||
       !description ||
       !_id
-      || !backendLink
     ) {
       throw new Error(
-        "Missing project data, [title, image, liveLink, fullDescription, description, _id, backendLink] is require"
+        "Missing project data, [title, image, liveLink, fullDescription, description, _id] is require"
       );
     }
     const updatedProject = await Project.findByIdAndUpdate(_id, project);

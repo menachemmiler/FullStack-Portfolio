@@ -38,7 +38,6 @@ const AddProject = () => {
   };
 
   useEffect(() => {
-    // To check if it is already connected
     dispatch(getProfile());
   }, []);
 
@@ -77,6 +76,8 @@ const AddProject = () => {
                 onChange={(e) =>
                   setProject({ ...project, fullDescription: e.target.value })
                 }
+                aria-atomic
+                required
               />
               <input
                 type="text"
@@ -93,6 +94,15 @@ const AddProject = () => {
                 value={project.liveLink}
                 onChange={(e) =>
                   setProject({ ...project, liveLink: e.target.value })
+                }
+                required
+              />
+              <input
+                type="text"
+                placeholder="Project Backend Link"
+                value={project.backendLink}
+                onChange={(e) =>
+                  setProject({ ...project, backendLink: e.target.value })
                 }
                 required
               />
