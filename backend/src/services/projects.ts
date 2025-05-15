@@ -11,15 +11,12 @@ export const createNewProjectService = async (project: IProjectDTO) => {
       );
     }
     const uploadResponse = await createNewImage({
-      title,
-      description,
       file: image,
     });
-    const uploadedImage = uploadResponse.image;
-    if (!uploadedImage?.url) {
+    if (!uploadResponse?.url) {
       throw new Error("Image upload failed — no URL returned");
     }
-    const newProject = new Project({ ...project, image: uploadedImage.url });
+    const newProject = new Project({ ...project, image: uploadResponse.url });
     const savedProject = await newProject.save();
     return savedProject;
   } catch (err: any) {

@@ -33,11 +33,8 @@ export interface ProjectDocument extends IProject {
 }
 
 export interface Image extends Document {
-  id: string;
-  title: string;
-  description: string;
   url: string;
-  uploadDate: Date;
+  message: string;
 }
 
 export interface ImageDocument extends Image {
@@ -45,7 +42,5 @@ export interface ImageDocument extends Image {
 }
 
 export interface ImageDTO {
-  title: string;
-  description: string;
   file: Express.Multer.File;
 }
