@@ -22,9 +22,15 @@ const ProjectManagement = () => {
     liveLink: "",
     backendLink: "",
   });
+  const [imageError, setImageError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!project.image.size) {
+      setImageError(true);
+      setTimeout(() => setImageError(false), 1000);
+      return;
+    }
     try {
       dispatch(addNewProject(project));
     } catch (err: any) {
@@ -64,7 +70,12 @@ const ProjectManagement = () => {
             <h1>Hello {user.username}</h1>
           </div>
           <div className="main">
-            <AddProject handleSubmit={handleSubmit} project={project} setProject={setProject}/>
+            <AddProject
+              handleSubmit={handleSubmit}
+              project={project}
+              setProject={setProject}
+              imageError={imageError}
+            />
             <div className="edit-projects">
               <div className="header">
                 <h2>Edit Projects</h2>

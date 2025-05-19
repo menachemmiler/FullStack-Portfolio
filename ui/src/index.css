@@ -150,9 +150,19 @@
             font-size: 0.7rem;
             color: red;
           }
+          .error-blinking {
+            animation: blinker 1s step-end infinite;
+            font-size: 1.5rem;
+          }
         }
       }
     }
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
   }
 }
 

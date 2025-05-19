@@ -6,9 +6,15 @@ interface AddProjectProps {
   project: IProjectForm;
   setProject: React.Dispatch<React.SetStateAction<IProjectForm>>;
   handleSubmit: (e: React.FormEvent) => void;
+  imageError?: boolean;
 }
 
-const AddProject = ({ project, setProject, handleSubmit }: AddProjectProps) => {
+const AddProject = ({
+  project,
+  setProject,
+  handleSubmit,
+  imageError,
+}: AddProjectProps) => {
   return (
     <div className="add-project">
       <div className="header">
@@ -98,14 +104,23 @@ const AddProject = ({ project, setProject, handleSubmit }: AddProjectProps) => {
           size="small"
         />
         <div className="image">
-          <p className={project.image.size ? "" : "no-file-chosen"}>{project.image.name}</p>
+          <p
+            className={
+              project.image.size
+                ? ""
+                : imageError
+                ? "no-file-chosen error-blinking"
+                : "no-file-chosen"
+            }
+          >
+            {project.image.name}
+          </p>
           <Button component="label" role={undefined} variant="outlined">
             Project Image +
             <input
               hidden
               type="file"
               multiple
-              required
               onChange={(e) =>
                 setProject({
                   ...project,
