@@ -47,5 +47,6 @@ export interface projectState {
   error: string | null;
   status: DataStatus;
   projects: null | IProject[];
-  // data?: any;
+  newProject: null | IProject;
+  statusNewProject: DataStatus;
 }

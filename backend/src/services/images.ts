@@ -25,6 +25,5 @@ export const createNewImage = async (image: ImageDTO) => {
   const { data } = await api.post("upload", formData, {
     headers: formData.getHeaders(),
   });
-  console.log({data});
   return data;
 };

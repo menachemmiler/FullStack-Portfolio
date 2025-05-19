@@ -17,7 +17,11 @@ export const fetchLogin = createAsyncThunk(
   "user/login",
   async (user: IUser, thunkApi) => {
     try {
-      const res = await api.post("/api/users/login", JSON.stringify(user));
+      const res = await api.post("/api/users/login", JSON.stringify(user), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (res.status != 200) {
         return thunkApi.rejectWithValue("Can't login, please try again");
       }
