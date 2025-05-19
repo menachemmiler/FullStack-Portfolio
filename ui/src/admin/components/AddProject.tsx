@@ -115,7 +115,7 @@ const AddProject = ({
           >
             {project.image.name}
           </p>
-          <Button component="label" role={undefined} variant="outlined">
+          <Button component="label" variant="outlined">
             Project Image +
             <input
               hidden

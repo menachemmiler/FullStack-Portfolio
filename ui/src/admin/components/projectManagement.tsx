@@ -7,6 +7,7 @@ import {
   resetStatusNewProject,
 } from "../../redux/slices/projectSlice";
 import AddProject from "./AddProject";
+import EditProjects from "./editProjects";
 
 const ProjectManagement = () => {
   const dispatch = useAppDispatch();
@@ -55,6 +56,9 @@ const ProjectManagement = () => {
         image: new File([], "placeholder.txt"),
         liveLink: "",
         backendLink: "",
+        githubAll: "",
+        githubClient: "",
+        githubServer: "",
       });
     }
   }, [statusNewProject]);
@@ -76,11 +80,7 @@ const ProjectManagement = () => {
               setProject={setProject}
               imageError={imageError}
             />
-            <div className="edit-projects">
-              <div className="header">
-                <h2>Edit Projects</h2>
-              </div>
-            </div>
+            <EditProjects />
           </div>
         </div>
       </div>
