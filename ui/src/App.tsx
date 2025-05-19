@@ -4,8 +4,8 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Navigation from "./components/Navigation";
 import ValidateUser from "./admin/components/ValidateUser";
-import AddProject from "./admin/components/AddProject";
 import Login from "./admin/components/auth/Login";
+import ProjectManagement from "./admin/components/projectManagement";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
             path="/admin"
             element={
               <ValidateUser>
-                <AddProject />
+                <ProjectManagement />
               </ValidateUser>
             }
           />

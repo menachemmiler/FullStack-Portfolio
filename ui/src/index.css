@@ -104,10 +104,9 @@
   width: 100%;
 }
 
-.add-project {
+.project-management {
   width: 100%;
   height: 100%;
-  background-color: #cfe2ac;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -115,27 +114,44 @@
     width: 100%;
     height: 90%;
     display: flex;
-    background-color: #88b5d8;
     justify-content: space-evenly;
-    .right {
+    .edit-projects {
       width: 45%;
       height: 100%;
-      background-color: #00b894;
+      background-color: white;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 17px;
     }
-    .left {
+    .add-project {
       width: 45%;
       height: 100%;
-      background-color: rgb(228, 108, 108);
-    }
-    form {
-      height: 90%;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      padding-top: 3%;
-      gap: 1rem;
-      align-items: center;
-      background-color: yellow;
+      background-color: white;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      padding: 0 1% 1% 1%;
+      border-radius: 17px;
+      form {
+        background-color: var(--background);
+        box-shadow: inset 0 2px 20px rgba(0, 0, 0, 0.1);
+        height: 90%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 3%;
+        gap: 1rem;
+        align-items: center;
+        border-radius: 14px;
+        .image {
+          text-align: center;
+          p {
+            font-size: 0.9rem;
+            color: var(--text);
+          }
+          .no-file-chosen {
+            font-size: 0.7rem;
+            color: red;
+          }
+        }
+      }
     }
   }
 }
@@ -149,7 +165,7 @@
 }
 
 @media (max-width: 1111px) {
-  .add-project {
+  .project-management {
     .main {
       display: flex;
       gap: 2rem;
@@ -158,15 +174,13 @@
       justify-content: center;
       flex-wrap: wrap;
       overflow-y: scroll;
-      .left {
+      .add-project {
         width: 100%;
         height: 100%;
-        background-color: rgb(228, 108, 108);
       }
-      .right {
+      .edit-projects {
         width: 100%;
         height: 100%;
-        background-color: #00b894;
       }
     }
   }
