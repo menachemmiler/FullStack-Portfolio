@@ -53,6 +53,18 @@ export const addNewProject = createAsyncThunk(
         "backendLink",
         newProject.backendLink ? newProject.backendLink : ""
       );
+      formData.append(
+        "githubAll",
+        newProject.githubAll ? newProject.githubAll : ""
+      );
+      formData.append(
+        "githubClient",
+        newProject.githubClient ? newProject.githubClient : ""
+      );
+      formData.append(
+        "githubServer",
+        newProject.githubServer ? newProject.githubServer : ""
+      );
       console.log({ formData });
       const res = await api.post("/api/projects", formData, {
         headers: { Authorization: localStorage.getItem("Authorization")! },
