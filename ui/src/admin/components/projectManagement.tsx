@@ -6,8 +6,8 @@ import {
   addNewProject,
   resetStatusNewProject,
 } from "../../redux/slices/projectSlice";
-import AddProject from "./AddProject";
 import EditProjects from "./editProjects";
+import AddProject from "./addProject";
 
 const ProjectManagement = () => {
   const dispatch = useAppDispatch();
