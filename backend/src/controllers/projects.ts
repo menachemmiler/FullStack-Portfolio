@@ -11,7 +11,7 @@ import { upload } from "../middlewares/multer";
 
 const router = Router();
 
-router.get("/", getAllProjects); //בשביל הסביבת פיתוח
+router.get("/", getAllProjects);
 
 router.post("/", verifyUser, upload.single("image"), createNewProject);
 

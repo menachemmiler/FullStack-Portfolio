@@ -73,7 +73,7 @@ export const updateProject = async (req: Request, res: Response) => {
 
 export const deleteProject = async (req: Request, res: Response) => {
   try {
-    const deletedProject = await deleteProjectService(req.body);
+    const deletedProject = await deleteProjectService(req.params.id);
     res.status(200).json(deletedProject);
   } catch (err: any) {
     console.log(err);

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Image, ImageDTO } from "../types/projects";
+import { ImageDTO } from "../types/projects";
 import FormData from "form-data";
 
 export const api = axios.create({
@@ -26,4 +26,16 @@ export const createNewImage = async (image: ImageDTO) => {
     headers: formData.getHeaders(),
   });
   return data;
+};
+
+export const deleteImage = async (imageUrl: string) => {
+  const path = imageUrl.split(
+    "https://storage.googleapis.com/show-project/"
+  )[1];
+  const deletedImage = await api.delete(`delete/${path}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return deletedImage;
 };

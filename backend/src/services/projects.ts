@@ -1,6 +1,6 @@
 import Project from "../models/project";
 import { IProject, IProjectDTO, ProjectDocument } from "../types/projects";
-import { createNewImage } from "./images";
+import { createNewImage, deleteImage } from "./images";
 
 export const createNewProjectService = async (project: IProjectDTO) => {
   try {
@@ -64,20 +64,23 @@ export const updateProjectService = async (project: ProjectDocument) => {
     const updatedProject = await Project.findByIdAndUpdate(_id, project);
     return updatedProject;
   } catch (err: any) {
-    console.log(err);
     throw new Error("Can't update the project: " + err.message);
   }
 };
 
-export const deleteProjectService = async (project: ProjectDocument) => {
+export const deleteProjectService = async (projectId: string) => {
   try {
-    if (!project._id) {
-      throw new Error("Missing project data,  _id is require");
+    const project = await Project.findById(projectId);
+    if (!project) {
+      throw new Error("Cant find the project with this id: " + projectId);
+    }
+    const deleteImageResponse = await deleteImage(project.image);
+    if (!deleteImageResponse) {
+      throw new Error("Image deletion failed");
     }
     const deletedProject = await Project.deleteOne({ _id: project._id });
     return deletedProject;
   } catch (err: any) {
-    console.log(err);
-    throw new Error("Can't update the project: " + err.message);
+    throw new Error("Can't delete the project: " + err.message);
   }
 };
