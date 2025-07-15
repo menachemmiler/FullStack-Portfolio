@@ -6,14 +6,13 @@ import loading from "../../assets/loading.gif";
 import { useEffect, useState } from "react";
 import {
   addNewProject,
-  resetStatusNewProject,
+  resetStatusProject,
 } from "../../redux/slices/projectSlice";
 
 const AddProject = () => {
   const dispatch = useAppDispatch();
-  const { newProject, statusNewProject } = useAppSelector(
-    (state) => state.projects
-  );
+  const { project: newProject, statusNewProject: statusNewProject } =
+    useAppSelector((state) => state.projects);
   const [project, setProject] = useState<IProjectForm>({
     title: "",
     description: "",
@@ -40,9 +39,9 @@ const AddProject = () => {
 
   useEffect(() => {
     if (statusNewProject == DataStatus.FAILED) {
-      setTimeout(() => dispatch(resetStatusNewProject()), 2000);
+      setTimeout(() => dispatch(resetStatusProject()), 2000);
     } else if (statusNewProject == DataStatus.SUCCESS) {
-      setTimeout(() => dispatch(resetStatusNewProject()), 2000);
+      setTimeout(() => dispatch(resetStatusProject()), 2000);
       setProject({
         title: "",
         description: "",

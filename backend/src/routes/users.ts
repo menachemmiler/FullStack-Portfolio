@@ -1,60 +1,23 @@
-import { Request, Response } from "express";
-import { LoginDto, RegisterDto } from "../../dto/user";
+import { Router } from "express";
 import {
-  createNewUser,
-  getAllUsersService,
-  initDatabase,
-  profileService,
-  userLogin,
-} from "../services/users";
+  getAllUsers,
+  login,
+  profile,
+  register,
+  seed,
+} from "../controllers/users";
+import verifyUser from "../middlewares/verifyUser";
 
-export const login = async (req: Request<LoginDto>, res: Response) => {
-  try {
-    const loggedUser = await userLogin(req.body);
-    res.status(200).json(loggedUser);
-  } catch (err) {
-    res.status(400).json((err as Error).message + " routes/users.ts");
-  }
-};
+const router = Router();
 
-export const register = async (
-  req: Request<any, any, RegisterDto>,
-  res: Response
-) => {
-  try {
-    // console.log("req.body= ", req.body);
-    const freshlyCreatedUser = await createNewUser(req.body);
-    res.status(201).json(freshlyCreatedUser);
-  } catch (err: any) {
-    res.status(400).json(err.message);
-  }
-};
+router.get("/", getAllUsers); //בשביל הסביבת פיתוח
 
-export const profile = async (req: Request, res: Response) => {
-  try {
-    const resulte = await profileService((req as any).user);
-    res.status(200).json(resulte);
-  } catch (err: any) {
-    res.status(400).json(err.message);
-  }
-};
+router.post("/seed", seed); // בשביל הסביבת פיתוח
 
-export const seed = async (_req: Request, res: Response) => {
-  try {
-    await initDatabase();
-    res.sendStatus(201);
-  } catch (err) {
-    console.log(err);
-    res.sendStatus(400);
-  }
-};
+router.post("/login", login);
 
-export const getAllUsers = async (req: Request, res: Response) => {
-  try {
-    const users = await getAllUsersService();
-    res.status(200).json(users);
-  } catch (err) {
-    console.log(err);
-    res.sendStatus(400);
-  }
-};
+router.post("/register", register);
+
+router.get("/profile", verifyUser, profile);
+
+export default router;

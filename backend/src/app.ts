@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
-import usersController from "./controllers/users";
-import productsController from "./controllers/projects";
+import usersController from "./routes/users";
+import productsController from "./routes/projects";
 import { connectToMongo } from "./config/db";
 
 const PORT = process.env.PORT || 3000;

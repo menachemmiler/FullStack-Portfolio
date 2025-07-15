@@ -23,12 +23,10 @@ function App() {
       <div className="app">
         <Navigation />
         <Routes>
-          {/* מסלולים ציבוריים */}
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="login" element={<Login />} />
-          {/* מסלולים למשתמש admin */}
           <Route
             path="/admin"
             element={

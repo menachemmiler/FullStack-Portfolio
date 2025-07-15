@@ -15,7 +15,7 @@ const initialState: projectState = {
   error: null,
   status: DataStatus.IDLE,
   projects: null,
-  newProject: null,
+  project: null,
   statusNewProject: DataStatus.IDLE,
 };
 
@@ -81,6 +81,23 @@ export const addNewProject = createAsyncThunk(
   }
 );
 
+export const deleteProject = createAsyncThunk(
+  "project/deleteProject",
+  async (projectId: string, thunkApi) => {
+    try {
+      const res = await api.delete(`/api/projects/${projectId}`, {
+        headers: { Authorization: localStorage.getItem("Authorization")! },
+      });
+      if (res.status != 200) {
+        return thunkApi.rejectWithValue("Can't delete project");
+      }
+      return thunkApi.fulfillWithValue(res.data);
+    } catch (err: any) {
+      return thunkApi.rejectWithValue(`Can't delete project:  ${err.message}`);
+    }
+  }
+);
+
 const projectsSlice = createSlice({
   name: "projects",
   initialState,
@@ -88,9 +105,9 @@ const projectsSlice = createSlice({
     updateProjects: (state, action) => {
       state.projects = action.payload;
     },
-    resetStatusNewProject: (state) => {
+    resetStatusProject: (state) => {
       state.statusNewProject = DataStatus.IDLE;
-      state.newProject = null;
+      state.project = null;
     },
   },
   extraReducers: (builder: ActionReducerMapBuilder<projectState>) => {
@@ -113,12 +130,12 @@ const projectsSlice = createSlice({
       .addCase(addNewProject.pending, (state) => {
         state.statusNewProject = DataStatus.LOADING;
         state.error = null;
-        state.newProject = null;
+        state.project = null;
       })
       .addCase(addNewProject.fulfilled, (state, action) => {
         state.statusNewProject = DataStatus.SUCCESS;
         state.error = null;
-        state.newProject = action.payload as unknown as IProject;
+        state.project = action.payload as unknown as IProject;
         if (state.projects) {
           state.projects.push(action.payload);
         } else {
@@ -129,11 +146,26 @@ const projectsSlice = createSlice({
         console.log({ action });
         state.statusNewProject = DataStatus.FAILED;
         state.error = action.error as string;
-        state.newProject = null;
+        state.project = null;
+      })
+      .addCase(deleteProject.fulfilled, (state, action) => {
+        state.error = null;
+        state.project = action.payload as unknown as IProject;
+        // if (state.projects) {
+        //   state.projects.splice(
+        //     state.projects.findIndex((p) => p._id === action.payload._id),
+        //     1
+        //   );
+        // } else {
+        //   state.projects = [action.payload];
+        // }
+      })
+      .addCase(deleteProject.rejected, (state, _action) => {
+        state.project = null;
       });
   },
 });
 
-export const { updateProjects, resetStatusNewProject } = projectsSlice.actions;
+export const { updateProjects, resetStatusProject } = projectsSlice.actions;
 
 export default projectsSlice;
