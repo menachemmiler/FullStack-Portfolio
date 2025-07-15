@@ -14,7 +14,7 @@ const Navigation = () => {
       </Link>
 
       <button
-        className="menu-toggle"
+        className={`menu-toggle ${isMenuOpen ? "active" : ""}`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}

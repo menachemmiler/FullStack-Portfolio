@@ -56,7 +56,6 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  z-index: 1001;
 }
 
 .menu-toggle {
@@ -65,7 +64,6 @@
   border: none;
   color: var(--primary);
   cursor: pointer;
-  padding: 0.5rem;
   z-index: 1001;
 }
 
@@ -282,11 +280,16 @@
     display: block;
   }
 
+  .menu-toggle.active {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
   .nav-links {
     position: fixed;
     top: 0;
     right: 0;
-    width: 0;
     background: white;
     overflow: hidden;
     opacity: 0;
