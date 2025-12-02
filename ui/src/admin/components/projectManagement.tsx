@@ -1,8 +1,8 @@
-import { useAppSelector } from "../../redux/store";
-import { DataStatus } from "../../utils/interfaces";
-import EditProjects from "./editProjects";
-import AddProject from "./addProject";
-import loading from "../../assets/loading.gif";
+import loading from '../../assets/loading.gif';
+import { useAppSelector } from '../../redux/store';
+import { DataStatus } from '../../utils/interfaces';
+import AddProject from './AddProject';
+import EditProjects from './editProjects';
 
 const ProjectManagement = () => {
   const { error, status, user } = useAppSelector((state) => state.user);
@@ -17,7 +17,7 @@ const ProjectManagement = () => {
         )}
         {status === DataStatus.FAILED && (
           <>
-            <p style={{ color: "red" }}>{error}</p>{" "}
+            <p style={{ color: 'red' }}>{error}</p>{' '}
           </>
         )}
         <div className="project-management">

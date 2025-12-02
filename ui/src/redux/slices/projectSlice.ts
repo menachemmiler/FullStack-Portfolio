@@ -1,15 +1,6 @@
-import {
-  ActionReducerMapBuilder,
-  createAsyncThunk,
-  createSlice,
-} from "@reduxjs/toolkit";
-import {
-  DataStatus,
-  IProject,
-  IProjectForm,
-  projectState,
-} from "../../utils/interfaces";
-import { api } from "../../utils/axios";
+import { ActionReducerMapBuilder, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { api } from '../../utils/axios';
+import { DataStatus, IProject, IProjectForm, projectState } from '../../utils/interfaces';
 
 const initialState: projectState = {
   error: null,
@@ -19,87 +10,69 @@ const initialState: projectState = {
   statusNewProject: DataStatus.IDLE,
 };
 
-export const getProjects = createAsyncThunk(
-  "project/getProjects",
-  async (_, thunkApi) => {
-    try {
-      const res = await api.get("/api/projects");
-      if (res.status != 200) {
-        return thunkApi.rejectWithValue(
-          "Can't find the user, please try again"
-        );
-      }
-      return thunkApi.fulfillWithValue(res.data);
-    } catch (err: any) {
-      return thunkApi.rejectWithValue(
-        `Can't get projects, please try again ${err.message}`
-      );
+export const getProjects = createAsyncThunk('project/getProjects', async (_, thunkApi) => {
+  try {
+    const res = await api.get('/api/projects');
+    if (res.status != 200) {
+      return thunkApi.rejectWithValue("Can't find the user, please try again");
     }
+    return thunkApi.fulfillWithValue(res.data);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    return thunkApi.rejectWithValue(`Can't get projects, please try again ${err.message}`);
   }
-);
+});
 
 export const addNewProject = createAsyncThunk(
-  "project/addNewProject",
+  'project/addNewProject',
   async (newProject: IProjectForm, thunkApi) => {
     try {
       console.log({ newProject });
       const formData = new FormData();
-      formData.append("title", newProject.title);
-      formData.append("description", newProject.description);
-      formData.append("fullDescription", newProject.fullDescription);
-      formData.append("image", newProject.image);
-      formData.append("liveLink", newProject.liveLink);
-      formData.append(
-        "backendLink",
-        newProject.backendLink ? newProject.backendLink : ""
-      );
-      formData.append(
-        "githubAll",
-        newProject.githubAll ? newProject.githubAll : ""
-      );
-      formData.append(
-        "githubClient",
-        newProject.githubClient ? newProject.githubClient : ""
-      );
-      formData.append(
-        "githubServer",
-        newProject.githubServer ? newProject.githubServer : ""
-      );
+      formData.append('title', newProject.title);
+      formData.append('description', newProject.description);
+      formData.append('fullDescription', newProject.fullDescription);
+      formData.append('image', newProject.image);
+      formData.append('liveLink', newProject.liveLink);
+      formData.append('backendLink', newProject.backendLink ? newProject.backendLink : '');
+      formData.append('githubAll', newProject.githubAll ? newProject.githubAll : '');
+      formData.append('githubClient', newProject.githubClient ? newProject.githubClient : '');
+      formData.append('githubServer', newProject.githubServer ? newProject.githubServer : '');
       console.log({ formData });
-      const res = await api.post("/api/projects", formData, {
-        headers: { Authorization: localStorage.getItem("Authorization")! },
+      const res = await api.post('/api/projects', formData, {
+        headers: { Authorization: localStorage.getItem('Authorization')! },
       });
       if (res.status != 201) {
         return thunkApi.rejectWithValue("Can't add project, please try again");
       }
       return thunkApi.fulfillWithValue(res.data);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      return thunkApi.rejectWithValue(
-        `Can't add project, please try again ${err.message}`
-      );
+      return thunkApi.rejectWithValue(`Can't add project, please try again ${err.message}`);
     }
-  }
+  },
 );
 
 export const deleteProject = createAsyncThunk(
-  "project/deleteProject",
+  'project/deleteProject',
   async (projectId: string, thunkApi) => {
     try {
       const res = await api.delete(`/api/projects/${projectId}`, {
-        headers: { Authorization: localStorage.getItem("Authorization")! },
+        headers: { Authorization: localStorage.getItem('Authorization')! },
       });
       if (res.status != 200) {
         return thunkApi.rejectWithValue("Can't delete project");
       }
       return thunkApi.fulfillWithValue(res.data);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       return thunkApi.rejectWithValue(`Can't delete project:  ${err.message}`);
     }
-  }
+  },
 );
 
 const projectsSlice = createSlice({
-  name: "projects",
+  name: 'projects',
   initialState,
   reducers: {
     updateProjects: (state, action) => {
@@ -160,7 +133,7 @@ const projectsSlice = createSlice({
         //   state.projects = [action.payload];
         // }
       })
-      .addCase(deleteProject.rejected, (state, _action) => {
+      .addCase(deleteProject.rejected, (state) => {
         state.project = null;
       });
   },
