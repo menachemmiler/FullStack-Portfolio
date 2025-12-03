@@ -20,15 +20,11 @@
   background-color: var(--background);
 }
 
-@keyframes blinker {
-  50% {
+/* @keyframes blinker {
+  100% {
     opacity: 0;
   }
-}
-
-.hero-content {
-  max-width: 600px;
-}
+} */
 
 .button-group {
   display: flex;
@@ -75,19 +71,4 @@
 .button-outline:hover {
   background: var(--secondary);
   color: white;
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-links a {
-  color: var(--text);
-  transition: var(--transition);
-}
-
-.social-links a:hover {
-  color: var(--secondary);
-  transform: translateY(-2px);
 }
