@@ -1,0 +1,252 @@
+.page-projects {
+  height: 92%;
+  width: 100%;
+}
+
+.page-projects > section {
+  height: 100%;
+  width: 100%;
+}
+
+.projects-section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.projects-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.projects-section h4 {
+  margin-bottom: 2rem;
+}
+
+.projects-flex {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  padding-top: 4rem;
+}
+
+.projects-flex::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-flex-top {
+  width: 100%;
+  text-align: center;
+}
+
+/* .project-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  width: 600px;
+  height: 500px;
+} */
+
+.project-card {
+  position: relative;
+  width: 600px;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* .project-background {
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+} */
+
+.project-background {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* .project-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+} */
+
+.project-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.project-card:hover .project-background img {
+  transform: scale(1.05);
+}
+
+/* .project-content {
+  padding: 1.5rem;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+
+/* .project-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-content p {
+  color: #636e72;
+  margin-bottom: 1rem;
+} */
+
+.project-links {
+  display: flex;
+  .left {
+    width: 80%;
+    display: flex;
+  }
+
+  .right {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1111px) {
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .project-card:hover .project-background img {
+    transform: scale(1.05);
+  }
+
+  .project-background {
+    width: 100%;
+    max-height: 250px;
+  }
+
+  .project-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+  }
+
+  .project-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-content p {
+    color: #636e72;
+    margin-bottom: 1rem;
+  }
+
+  .project-links {
+    min-width: 100%;
+    max-width: 100%;
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    .left {
+      max-width: 90%;
+      min-width: 30%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .right {
+      min-width: 30%;
+      max-width: 30%;
+      display: flex;
+      align-self: flex-end;
+    }
+  }
+}
+
+@media (min-width: 418px) {
+  .projects-flex {
+    padding: 4rem 2rem 0rem 2rem;
+  }
+}
+
+@media (max-width: 418px) {
+  .project-card {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 340px) {
+  .project-background {
+    max-height: 200px;
+  }
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: rgba(0, 0, 0, 0.7); /* overlay שחור שקוף */
+  color: white;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  transition: opacity 0.3s;
+}
+
+.project-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  text-align: left;
+}
+
+.overlay-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.overlay-content p {
+  margin-bottom: 1.5rem;
+}
+
+.project-links .button {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
