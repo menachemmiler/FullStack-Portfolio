@@ -1,25 +1,23 @@
-import { Button, TextField } from "@mui/material";
-import { DataStatus, IProjectForm } from "../../utils/interfaces";
-import { SendIcon } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import loading from "../../assets/loading.gif";
-import { useEffect, useState } from "react";
-import {
-  addNewProject,
-  resetStatusProject,
-} from "../../redux/slices/projectSlice";
+import { Button, TextField } from '@mui/material';
+import { SendIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import loading from '../../../assets/loading.gif';
+import { addNewProject, resetStatusProject } from '../../../redux/slices/projectSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import { DataStatus, IProjectForm } from '../../../utils/interfaces';
 
 const AddProject = () => {
   const dispatch = useAppDispatch();
-  const { project: newProject, statusNewProject: statusNewProject } =
-    useAppSelector((state) => state.projects);
+  const { project: newProject, statusNewProject: statusNewProject } = useAppSelector(
+    (state) => state.projects,
+  );
   const [project, setProject] = useState<IProjectForm>({
-    title: "",
-    description: "",
-    fullDescription: "",
-    image: new File([], "No File Chosen"),
-    liveLink: "",
-    backendLink: "",
+    title: '',
+    description: '',
+    fullDescription: '',
+    image: new File([], 'No File Chosen'),
+    liveLink: '',
+    backendLink: '',
   });
   const [imageError, setImageError] = useState(false);
 
@@ -43,15 +41,15 @@ const AddProject = () => {
     } else if (statusNewProject == DataStatus.SUCCESS) {
       setTimeout(() => dispatch(resetStatusProject()), 2000);
       setProject({
-        title: "",
-        description: "",
-        fullDescription: "",
-        image: new File([], "placeholder.txt"),
-        liveLink: "",
-        backendLink: "",
-        githubAll: "",
-        githubClient: "",
-        githubServer: "",
+        title: '',
+        description: '',
+        fullDescription: '',
+        image: new File([], 'placeholder.txt'),
+        liveLink: '',
+        backendLink: '',
+        githubAll: '',
+        githubClient: '',
+        githubServer: '',
       });
     }
   }, [statusNewProject]);
@@ -62,20 +60,16 @@ const AddProject = () => {
         <h2>Add New Project</h2>
       </div>
       <form onSubmit={handleSubmit}>
-        {statusNewProject === "LOADING" && (
+        {statusNewProject === 'LOADING' && (
           <div className="loading">
             <img src={loading} alt="Loading..." />
           </div>
         )}
-        {statusNewProject === "FAILED" && (
-          <div className="error">
-            Failed to create project, please try again.
-          </div>
+        {statusNewProject === 'FAILED' && (
+          <div className="error">Failed to create project, please try again.</div>
         )}
-        {statusNewProject === "SUCCESS" && (
-          <div className="success">
-            {`Project created successfully: ${newProject?.title}`}
-          </div>
+        {statusNewProject === 'SUCCESS' && (
+          <div className="success">{`Project created successfully: ${newProject?.title}`}</div>
         )}
         {statusNewProject === DataStatus.IDLE && (
           <>
@@ -84,9 +78,7 @@ const AddProject = () => {
               label="Project Title"
               value={project.title}
               variant="filled"
-              onChange={(e) =>
-                setProject({ ...project, title: e.target.value })
-              }
+              onChange={(e) => setProject({ ...project, title: e.target.value })}
               required
               size="small"
             />
@@ -94,9 +86,7 @@ const AddProject = () => {
               id="description"
               label="Project Description"
               value={project.description}
-              onChange={(e) =>
-                setProject({ ...project, description: e.target.value })
-              }
+              onChange={(e) => setProject({ ...project, description: e.target.value })}
               variant="filled"
               required
               size="small"
@@ -105,9 +95,7 @@ const AddProject = () => {
               label="Project Live Link"
               id="liveLink"
               value={project.liveLink}
-              onChange={(e) =>
-                setProject({ ...project, liveLink: e.target.value })
-              }
+              onChange={(e) => setProject({ ...project, liveLink: e.target.value })}
               required
               variant="filled"
               size="small"
@@ -117,9 +105,7 @@ const AddProject = () => {
               label="Backend Server Link"
               value={project.backendLink}
               variant="filled"
-              onChange={(e) =>
-                setProject({ ...project, backendLink: e.target.value })
-              }
+              onChange={(e) => setProject({ ...project, backendLink: e.target.value })}
               size="small"
             />
             <TextField
@@ -129,9 +115,7 @@ const AddProject = () => {
               multiline
               rows={3}
               variant="filled"
-              onChange={(e) =>
-                setProject({ ...project, fullDescription: e.target.value })
-              }
+              onChange={(e) => setProject({ ...project, fullDescription: e.target.value })}
               required
               size="small"
             />
@@ -140,9 +124,7 @@ const AddProject = () => {
               label="Github Client Link"
               value={project.githubClient}
               variant="filled"
-              onChange={(e) =>
-                setProject({ ...project, githubClient: e.target.value })
-              }
+              onChange={(e) => setProject({ ...project, githubClient: e.target.value })}
               size="small"
             />
             <TextField
@@ -150,9 +132,7 @@ const AddProject = () => {
               label="Github Server Link"
               value={project.githubServer}
               variant="filled"
-              onChange={(e) =>
-                setProject({ ...project, githubServer: e.target.value })
-              }
+              onChange={(e) => setProject({ ...project, githubServer: e.target.value })}
               size="small"
             />
             <TextField
@@ -160,19 +140,17 @@ const AddProject = () => {
               label="Github All Link"
               value={project.githubAll}
               variant="filled"
-              onChange={(e) =>
-                setProject({ ...project, githubAll: e.target.value })
-              }
+              onChange={(e) => setProject({ ...project, githubAll: e.target.value })}
               size="small"
             />
             <div className="image">
               <p
                 className={
                   project.image.size
-                    ? ""
+                    ? ''
                     : imageError
-                    ? "no-file-chosen error-blinking"
-                    : "no-file-chosen"
+                    ? 'no-file-chosen error-blinking'
+                    : 'no-file-chosen'
                 }
               >
                 {project.image.name}
@@ -186,9 +164,7 @@ const AddProject = () => {
                   onChange={(e) =>
                     setProject({
                       ...project,
-                      image: e.target.files
-                        ? e.target.files[0]
-                        : new File([], ""),
+                      image: e.target.files ? e.target.files[0] : new File([], ''),
                     })
                   }
                 />

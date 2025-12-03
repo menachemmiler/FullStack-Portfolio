@@ -1,5 +1,5 @@
 import { Code, ExternalLink, Github, Server } from 'lucide-react';
-import { IProject } from '../utils/interfaces';
+import { IProject } from '../../utils/interfaces';
 
 interface Props {
   project: IProject;

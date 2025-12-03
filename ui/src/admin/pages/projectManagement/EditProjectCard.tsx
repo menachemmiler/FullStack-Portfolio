@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { DataStatus, IProject } from "../../utils/interfaces";
-import { deleteProject, updateProjects } from "../../redux/slices/projectSlice";
-import loading from "../../assets/loading.gif";
+import { useEffect, useState } from 'react';
+import loading from '../../../assets/loading.gif';
+import { deleteProject, updateProjects } from '../../../redux/slices/projectSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import { DataStatus, IProject } from '../../../utils/interfaces';
 
 interface Props {
   project: IProject;
@@ -11,16 +11,14 @@ interface Props {
 const EditProjectCard = ({ project }: Props) => {
   const dispatch = useAppDispatch();
   const { projects } = useAppSelector((state) => state.projects);
-  const [statusDeletedProject, setStatusDeletedProject] = useState(
-    DataStatus.IDLE
-  );
+  const [statusDeletedProject, setStatusDeletedProject] = useState(DataStatus.IDLE);
 
   const handleDelete = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatusDeletedProject(DataStatus.LOADING);
     try {
       const deleted = await dispatch(deleteProject(project._id));
-      if (deleted.meta.requestStatus === "fulfilled") {
+      if (deleted.meta.requestStatus === 'fulfilled') {
         setStatusDeletedProject(DataStatus.SUCCESS);
       } else {
         setStatusDeletedProject(DataStatus.FAILED);
@@ -38,9 +36,7 @@ const EditProjectCard = ({ project }: Props) => {
     } else if (statusDeletedProject == DataStatus.SUCCESS) {
       setTimeout(() => {
         setStatusDeletedProject(DataStatus.IDLE);
-        dispatch(
-          updateProjects(projects?.filter((p) => p._id !== project._id) || [])
-        );
+        dispatch(updateProjects(projects?.filter((p) => p._id !== project._id) || []));
       }, 2000);
     }
   }, [statusDeletedProject]);

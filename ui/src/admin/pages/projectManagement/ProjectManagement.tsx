@@ -1,8 +1,9 @@
-import loading from '../../assets/loading.gif';
-import { useAppSelector } from '../../redux/store';
-import { DataStatus } from '../../utils/interfaces';
+import loading from '../../../assets/loading.gif';
+import { useAppSelector } from '../../../redux/store';
+import { DataStatus } from '../../../utils/interfaces';
 import AddProject from './AddProject';
-import EditProjects from './editProjects';
+import EditProjects from './EditProjects';
+import './projectManagement.css';
 
 const ProjectManagement = () => {
   const { error, status, user } = useAppSelector((state) => state.user);

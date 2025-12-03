@@ -1,34 +1,28 @@
-import { ExternalLink, Github, Linkedin, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import './home.css';
 
 const Home = () => (
-  <div className="page">
+  <div className="main">
     <section className="home">
       <div className="hero-content">
         <h1>
           Hi, I'm <span className="highlight">Meny Miler</span>
         </h1>
         <p className="hero-text">
-          Full-stack developer specializing in building exceptional digital
-          experiences. Currently focused on building accessible, human-centered
-          products.
+          Full-stack developer specializing in building exceptional digital experiences. Currently
+          focused on building accessible, human-centered products.
         </p>
         <div className="button-group">
           <Link to="/projects" className="button button-primary">
             View My Work
             <ExternalLink size={18} />
           </Link>
-          <a
-            href="mailto:ms0556727820@gmail.com"
-            className="button button-outline"
-          >
+          <a href="mailto:ms0556727820@gmail.com" className="button button-outline">
             Contact Me
             <Mail size={18} />
           </a>
-          <a
-            href="whatsapp://send?phone=+97256727820"
-            className="button button-outline"
-          >
+          <a href="whatsapp://send?phone=+97256727820" className="button button-outline">
             Contact Me
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -43,11 +37,7 @@ const Home = () => (
           </a>
         </div>
         <div className="social-links">
-          <a
-            href="https://github.com/menachemmiler"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://github.com/menachemmiler" target="_blank" rel="noopener noreferrer">
             <Github size={24} />
           </a>
           <a

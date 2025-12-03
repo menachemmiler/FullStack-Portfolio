@@ -1,14 +1,14 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import Navigation from "./components/Navigation";
-import ValidateUser from "./admin/components/ValidateUser";
-import Login from "./admin/components/auth/Login";
-import ProjectManagement from "./admin/components/projectManagement";
-import { useAppDispatch } from "./redux/store";
-import { useEffect } from "react";
-import { getProjects } from "./redux/slices/projectSlice";
+import { useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ValidateUser from './admin/components/auth/ValidateUser';
+import Login from './admin/pages/login/Login';
+import ProjectManagement from './admin/pages/projectManagement/ProjectManagement';
+import Navigation from './components/navigation/Navigation';
+import About from './pages/about/About';
+import Home from './pages/home/Home';
+import Projects from './pages/projects/Projects';
+import { getProjects } from './redux/slices/projectSlice';
+import { useAppDispatch } from './redux/store';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -17,7 +17,6 @@ function App() {
     dispatch(getProjects());
   }, []);
 
-  
   return (
     <BrowserRouter>
       <div className="app">

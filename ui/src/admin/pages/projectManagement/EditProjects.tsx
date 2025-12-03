@@ -1,6 +1,6 @@
-import { useAppSelector } from "../../redux/store";
-import { DataStatus } from "../../utils/interfaces";
-import EditProjectCard from "./editProjectCard";
+import { useAppSelector } from '../../../redux/store';
+import { DataStatus } from '../../../utils/interfaces';
+import EditProjectCard from './EditProjectCard';
 
 const EditProjects = () => {
   const { error, status, projects } = useAppSelector((state) => state.projects);
@@ -14,9 +14,7 @@ const EditProjects = () => {
         {error && <div>{error}</div>}
         {status === DataStatus.LOADING && <div>Loading...</div>}
         {projects &&
-          projects.map((project) => (
-            <EditProjectCard project={project} key={project._id} />
-          ))}
+          projects.map((project) => <EditProjectCard project={project} key={project._id} />)}
       </div>
     </div>
   );

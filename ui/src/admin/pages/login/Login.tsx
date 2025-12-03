@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { fetchLogin, getProfile } from "../../../redux/slices/userSlice";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { fetchLogin, getProfile } from '../../../redux/slices/userSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import './login.css';
 
 export default function Login() {
   const dispatch = useAppDispatch();
   const { user: user } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     dispatch(getProfile());
@@ -16,7 +17,7 @@ export default function Login() {
 
   useEffect(() => {
     if (user?._id) {
-      navigate("/admin");
+      navigate('/admin');
     }
   }, [user, navigate]);
 
@@ -34,9 +35,7 @@ export default function Login() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={() => dispatch(fetchLogin({ username, password }))}>
-        Login
-      </button>
+      <button onClick={() => dispatch(fetchLogin({ username, password }))}>Login</button>
     </div>
   );
 }

@@ -1,15 +1,15 @@
-import { Mail } from "lucide-react";
+import { Mail } from 'lucide-react';
+import './about.css';
 
 const About = () => (
-  <div className="page">
+  <div className="page-about">
     <section className="about-section">
       <div className="about-content">
         <h2>About Me</h2>
         <p>
-          I'm a passionate software developer with experience in building web
-          applications using modern technologies. My focus is on creating
-          efficient, scalable, and user-friendly solutions that solve real-world
-          problems.
+          I'm a passionate software developer with experience in building web applications using
+          modern technologies. My focus is on creating efficient, scalable, and user-friendly
+          solutions that solve real-world problems.
         </p>
         <div className="skills-grid">
           <div className="skill-card">

@@ -1,14 +1,15 @@
 import { useSelector } from 'react-redux';
-import loading from '../assets/loading.gif';
-import { RootState } from '../redux/store';
-import { DataStatus } from '../utils/interfaces';
+import loading from '../../assets/loading.gif';
+import { RootState } from '../../redux/store';
+import { DataStatus } from '../../utils/interfaces';
 import ProjectCard from './ProjectCard';
+import './projects.css';
 
 const Projects = () => {
   const { error, projects, status } = useSelector((state: RootState) => state.projects);
 
   return (
-    <div className="page">
+    <div className="page-projects">
       <section className="projects-section">
         {status === DataStatus.LOADING && <img src={loading} alt="Loading..." />}
         {status === DataStatus.FAILED && <p style={{ color: 'red' }}>{error}</p>}
