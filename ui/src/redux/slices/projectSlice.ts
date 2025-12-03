@@ -17,7 +17,6 @@ export const getProjects = createAsyncThunk('project/getProjects', async (_, thu
       return thunkApi.rejectWithValue("Can't find the user, please try again");
     }
     return thunkApi.fulfillWithValue(res.data);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     return thunkApi.rejectWithValue(`Can't get projects, please try again ${err.message}`);
   }
@@ -46,7 +45,6 @@ export const addNewProject = createAsyncThunk(
         return thunkApi.rejectWithValue("Can't add project, please try again");
       }
       return thunkApi.fulfillWithValue(res.data);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       return thunkApi.rejectWithValue(`Can't add project, please try again ${err.message}`);
     }
@@ -64,7 +62,6 @@ export const deleteProject = createAsyncThunk(
         return thunkApi.rejectWithValue("Can't delete project");
       }
       return thunkApi.fulfillWithValue(res.data);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       return thunkApi.rejectWithValue(`Can't delete project:  ${err.message}`);
     }
