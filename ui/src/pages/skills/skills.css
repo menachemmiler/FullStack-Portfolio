@@ -1,28 +1,28 @@
-.page-about {
+.page-skills {
   height: 92%;
   width: 100%;
 }
 
-.page-about > section {
+.page-skills > section {
   height: 100%;
   width: 100%;
 }
 
-.about-section {
+.skills-section {
   padding: 4rem 0;
 }
 
-.about-content {
+.skills-content {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.about-content h2 {
+.skills-content h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
 }
 
-.about-content p {
+.skills-content p {
   font-size: 1.125rem;
   margin-bottom: 2rem;
   color: #636e72;

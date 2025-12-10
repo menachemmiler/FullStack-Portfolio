@@ -1,16 +1,12 @@
 import { Mail } from 'lucide-react';
-import './about.css';
+import './skills.css';
 
-const About = () => (
-  <div className="page-about">
-    <section className="about-section">
-      <div className="about-content">
-        <h2>About Me</h2>
-        <p>
-          I'm a passionate software developer with experience in building web applications using
-          modern technologies. My focus is on creating efficient, scalable, and user-friendly
-          solutions that solve real-world problems.
-        </p>
+const Skills = () => (
+  <div className="page-skills">
+    <section className="skills-section">
+      <div className="skills-content">
+        <h2>Skills and experience</h2>
+        <p>The technologies and tools I use to build advanced digital solutions</p>
         <div className="skills-grid">
           <div className="skill-card">
             <h3>Frontend</h3>
@@ -38,4 +34,4 @@ const About = () => (
   </div>
 );
 
-export default About;
+export default Skills;

@@ -4,9 +4,9 @@ import ValidateUser from './admin/components/auth/ValidateUser';
 import Login from './admin/pages/login/Login';
 import ProjectManagement from './admin/pages/projectManagement/ProjectManagement';
 import Navigation from './components/navigation/Navigation';
-import About from './pages/about/About';
 import Home from './pages/home/Home';
 import Projects from './pages/projects/Projects';
+import Skills from './pages/skills/Skills';
 import { getProjects } from './redux/slices/projectSlice';
 import { useAppDispatch } from './redux/store';
 
@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/skills" element={<Skills />} />
           <Route path="login" element={<Login />} />
           <Route
             path="/admin"

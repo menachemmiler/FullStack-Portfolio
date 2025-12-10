@@ -24,7 +24,7 @@ const Navigation = () => {
       <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
         <li onClick={() => setIsMenuOpen(false)}>
           <Link to="/" className={location.pathname === '/' ? 'nav-link active' : 'nav-link'}>
-            Home
+            About
           </Link>
         </li>
         <li onClick={() => setIsMenuOpen(false)}>
@@ -37,10 +37,10 @@ const Navigation = () => {
         </li>
         <li onClick={() => setIsMenuOpen(false)}>
           <Link
-            to="/about"
-            className={location.pathname === '/about' ? 'nav-link active' : 'nav-link'}
+            to="/skills"
+            className={location.pathname === '/skills' ? 'nav-link active' : 'nav-link'}
           >
-            About
+            Skills
           </Link>
         </li>
       </ul>
