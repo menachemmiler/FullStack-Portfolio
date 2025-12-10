@@ -1,6 +1,15 @@
 .main {
   height: 92%;
   width: 100%;
+
+  /* background-image: radial-gradient(
+    circle at 50% 60%,
+    rgba(72, 61, 139, 0.45) 0%,
+    rgba(17, 24, 39, 0.1) 40%,
+    rgba(17, 24, 39, 0) 70%
+  ); */
+
+  background-image: var(--background-image);
 }
 
 .main > section {
