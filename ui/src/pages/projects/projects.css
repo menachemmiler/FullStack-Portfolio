@@ -1,94 +1,90 @@
 /* ------------------------------
-   Page Layout
+   Page Layout — פריסת דף
 ------------------------------ */
 
 .page-projects {
-  height: 92%;
-  width: 100%;
+  height: 92%; /* גובה כללי של עמוד הפרויקטים */
+  width: 100%; /* רוחב מלא */
 }
 
 .page-projects > section {
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .projects-section {
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  display: flex; /* יישור באמצעות Flexbox */
+  justify-content: center; /* מיקום באמצע אופקי */
+  align-items: center; /* מיקום באמצע אנכי */
+  flex-direction: column; /* העמדת אלמנטים אחד מתחת לשני */
 }
 
 .projects-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem; /* כותרת גדולה */
+  margin-bottom: 1rem; /* רווח מתחת */
 }
 
 .projects-section h4 {
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; /* רווח גדול יותר לכותרת המשנית */
 }
 
 .projects-flex {
-  display: flex;
-  gap: 2rem;
+  display: flex; /* תצוגת כרטיסיות גמישה */
+  gap: 2rem; /* רווח בין כרטיסיות */
   width: 100%;
   height: 100%;
-  justify-content: center;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-  padding-top: 4rem;
+  justify-content: center; /* מיקום במרכז */
+  flex-wrap: wrap; /* ירידה לשורות נוספות */
+  overflow-y: scroll; /* גלילה אנכית */
+  padding-top: 4rem; /* רווח מהחלק העליון */
 }
 
 .projects-flex::-webkit-scrollbar {
-  display: none;
+  display: none; /* העלמת פס הגלילה */
 }
 
 .projects-flex-top {
   width: 100%;
-  text-align: center;
+  text-align: center; /* יישור טקסט למרכז */
 }
 
 /* ------------------------------
-   Project Card
+   Project Card — כרטיס פרויקט
 ------------------------------ */
 
 .project-card {
-  position: relative;
+  position: relative; /* מאפשר שימוש באלמנטים ממוקמים בפנים */
   width: 600px;
   height: 500px;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 16px; /* פינות מעוגלות */
+  overflow: hidden; /* למנוע יציאה של תמונה מהקופסה */
+  cursor: pointer; /* סמן של לחיץ */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* צל בסיסי */
+  transition: transform 0.3s, box-shadow 0.3s; /* אנימציית מעבר */
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transform: translateY(-4px); /* עלייה קלה בהובר */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* צל עמוק יותר בהובר */
 }
 
-/* Background Image */
+/* Background Image — תמונת רקע של הכרטיס */
 .project-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+  object-fit: cover; /* מילוי מסגרת בצורה פרופורציונלית */
+  transition: transform 0.4s ease; /* מעבר חלק */
 }
 
 .project-card:hover .project-img {
-  transform: scale(1.06);
+  transform: scale(1.06); /* הגדלה קלה של התמונה בהובר */
 }
 
 /* ------------------------------
-   Always Visible Bottom Info
+   Always Visible Bottom Info — פס מידע קבוע בתחתית
 ------------------------------ */
-
-.project-card:hover .info-bar {
-  opacity: 0;
-}
 
 .info-bar {
   position: absolute;
@@ -98,75 +94,60 @@
   color: #fff;
   z-index: 10;
 
-  /* gradient soft fade */
+  /* רקע הדרגתי עדין */
   background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.35), transparent);
 
-  transition: opacity 0.3s ease;
+  transition: all 0.5s ease;
+
+  padding: 1.2rem 1.5rem 5rem;
+  overflow: visible; /* מאפשר לטקסט לעלות מעל הקופסה */
 }
 
 .info-bar h3 {
-  margin: 0 0 0.3rem 0;
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* כותרת */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
-.info-bar p {
-  margin: 0;
-  opacity: 0.85;
+.info-bar p.short {
+  font-size: 1rem; /* תיאור קצר */
+  color: #9ca3af; /* אפור רך */
+  margin-bottom: 0.5rem;
 }
 
-/* ------------------------------
-   Full Hover Panel
------------------------------- */
-
-.hover-panel {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 55%;
-  padding: 1.5rem;
-  z-index: 20;
-
-  color: #fff;
+/* Extra content that appears on hover */
+.extra {
+  max-height: 0;
+  overflow: hidden;
   opacity: 0;
-  pointer-events: none;
-
-  /* deep gradient like in sample */
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.45), transparent);
-
-  transition: opacity 0.3s ease;
+  transform: translateY(40px);
+  /* transition: all 0.4s ease; */
+  transition: transform 0.5s ease, opacity 0.5s ease, max-height 0.5s ease; /* מעבר יותר חלק */
 }
 
-.project-card:hover .hover-panel {
+.project-card:hover .extra {
+  max-height: 500px; /* מספיק גבוה כדי להראות את כל התוכן */
   opacity: 1;
-  pointer-events: auto;
+  transform: translateY(0);
 }
 
-.hover-panel h3 {
-  font-size: 1.6rem;
+.extra .full {
+  font-size: 0.95rem;
   margin-bottom: 1rem;
 }
 
-.hover-panel p {
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-  opacity: 0.95;
-}
-
-/* Links inside hover panel */
+/* Links inside extra */
 .links a {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   padding: 0.45rem 0.8rem;
-  border-radius: 6px;
+  border-radius: 9999px;
   backdrop-filter: blur(4px);
-
   color: white;
   text-decoration: none;
   font-size: 0.9rem;
-
   transition: background 0.2s;
   margin-right: 0.6rem;
 }
@@ -175,18 +156,32 @@
   background: rgba(255, 255, 255, 0.25);
 }
 
+.links .live {
+  background-color: #4f46e5;
+}
+
+.links .live:hover {
+  background-color: #6366f1; /* hover:bg-indigo-500 */
+}
+
 /* ------------------------------
-   Responsive
+   Responsive — התאמה למסכים
 ------------------------------ */
+
+@media (min-width: 1800px) {
+  .page-projects {
+    /* display: flex;
+    justify-content: center; */
+  }
+  .page-projects > section {
+    /* width: 80%; */
+  }
+}
 
 @media (max-width: 1111px) {
   .project-card {
     width: 90%;
     height: 420px;
-  }
-
-  .project-img {
-    height: 100%;
   }
 }
 
@@ -195,10 +190,6 @@
     width: 95%;
     height: 380px;
   }
-
-  .hover-panel {
-    height: 60%;
-  }
 }
 
 @media (max-width: 420px) {
@@ -206,7 +197,6 @@
     width: 100%;
     height: 330px;
   }
-
   .info-bar h3 {
     font-size: 1.3rem;
   }
