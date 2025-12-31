@@ -34,6 +34,10 @@ app.use(
   }),
 );
 
+app.use('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 app.use('/api/users', usersController);
 
 app.use('/api/projects', productsController);
