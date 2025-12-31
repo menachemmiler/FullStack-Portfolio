@@ -10,7 +10,7 @@ const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:3050';
 
 import http from 'http';
 import { Server } from 'socket.io';
-import './socket/io'; //מייבא את הקובץ של הסוקטים
+import { initSocket } from './socket/io';
 
 const app = express();
 connectToMongo();
@@ -23,6 +23,8 @@ export const io = new Server(server, {
     methods: '*',
   },
 });
+
+initSocket(io);
 
 app.use(express.json());
 app.use(

@@ -1,15 +1,14 @@
-import { io } from "../app";
+import { Server, Socket } from 'socket.io';
 
+// אנחנו מגדירים ש-io הוא מסוג Server ו-socket הוא מסוג Socket
+export const initSocket = (io: Server) => {
+  io.on('connection', (socket: Socket) => {
+    console.log('A user connected:', socket.id);
 
+    // כאן הלוגיקה שלך...
 
-io.on("connection", (socket) => {
-  console.log("A user connected"); // הדפסת התחברות לקוח
-  socket.on("login", () => {
-    console.log(`a user is login`);
+    socket.on('disconnect', () => {
+      console.log('User disconnected');
+    });
   });
-
-
-  socket.on("disconnect", () => {
-    console.log("A user disconnected"); // הדפסת התנתקות לקוח
-  });
-});
+};
