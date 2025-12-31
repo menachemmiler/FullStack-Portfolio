@@ -6,7 +6,7 @@ import productsController from './routes/projects';
 import usersController from './routes/users';
 
 const PORT = process.env.PORT || 3000;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:3050';
+const CORS_ORIGIN = process.env.CORS_ORIGIN;
 
 import http from 'http';
 import { Server } from 'socket.io';
