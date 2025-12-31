@@ -6,7 +6,7 @@ import productsController from './routes/projects';
 import usersController from './routes/users';
 
 const PORT = process.env.PORT || 3000;
-const CORS_ORIGIN = process.env.CORS_ORIGIN;
+const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:3050';
 
 import http from 'http';
 import { Server } from 'socket.io';
@@ -27,7 +27,7 @@ export const io = new Server(server, {
 app.use(express.json());
 app.use(
   cors({
-    origin: 'http://localhost:3050',
+    origin: [CORS_ORIGIN, 'http://localhost:3050'],
     credentials: true,
   }),
 );
