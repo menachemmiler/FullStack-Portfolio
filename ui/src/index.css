@@ -24,18 +24,6 @@
 /* dark mood */
 body.dark-mode {
   --navigation: #060b17;
-  --background-image: radial-gradient(
-      circle at 35% 65%,
-      rgba(147, 51, 234, 0.45) 0%,
-      rgba(147, 51, 234, 0.1) 20%,
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 65% 35%,
-      rgba(79, 70, 229, 0.45) 0%,
-      rgba(79, 70, 229, 0.1) 20%,
-      transparent 45%
-    );
   --background: #020617;
   --text: #dfe6e9;
   --transition: all 0.3s ease;
@@ -52,6 +40,7 @@ body.dark-mode {
   height: 100vh;
   width: 100vw;
   background-color: var(--background);
+  overflow: hidden;
 }
 
 .button-group {
