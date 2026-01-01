@@ -1,4 +1,4 @@
-import { Code, ExternalLink, Server } from 'lucide-react';
+import { Code, ExternalLink, GitBranch, Server } from 'lucide-react';
 import { IProject } from '../../utils/interfaces';
 
 interface Props {
@@ -32,6 +32,11 @@ export default function ProjectCard({ project }: Props) {
             {project.githubServer && (
               <a target="_blank" href={project.githubServer}>
                 Server <Server size={16} />
+              </a>
+            )}
+            {project.githubAll && (
+              <a target="_blank" href={project.githubAll}>
+                GitHub <GitBranch size={16} />
               </a>
             )}
           </div>
