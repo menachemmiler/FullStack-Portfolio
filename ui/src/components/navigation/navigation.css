@@ -106,3 +106,41 @@
     font-size: 1rem;
   }
 }
+
+/* עיצוב בסיסי לכפתור */
+.theme-toggle-btn {
+  padding: 0.5rem; /* p-2 */
+  border-radius: 0.5rem; /* rounded-lg */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease; /* transition-all */
+  background: transparent;
+}
+
+/* אפקט הגדלה בריחוף */
+.theme-toggle-btn:hover {
+  transform: scale(1.1); /* hover:scale-110 */
+}
+
+/* עיצוב כשהמצב כהה (הכפתור עצמו) */
+.theme-toggle-btn.dark {
+  background-color: rgba(255, 255, 255, 0.1); /* bg-white/10 */
+  color: #fde047; /* text-yellow-300 */
+}
+
+.theme-toggle-btn.dark:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* hover:bg-white/20 */
+}
+
+/* עיצוב כשהמצב בהיר (הכפתור עצמו) */
+.theme-toggle-btn.light {
+  background-color: rgba(17, 24, 39, 0.1); /* bg-gray-900/10 */
+  color: var(--secondary);
+}
+
+.theme-toggle-btn.light:hover {
+  background-color: rgba(17, 24, 39, 0.2); /* hover:bg-gray-900/20 */
+}

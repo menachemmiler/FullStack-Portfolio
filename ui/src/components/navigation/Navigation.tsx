@@ -1,11 +1,13 @@
-import { Menu, MessageSquare, X } from 'lucide-react';
+import { Menu, MessageSquare, Moon, Sun, X } from 'lucide-react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useDarkMode } from '../../hooks/useTheme';
 import './navigation.css';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const location = useLocation();
+  const { isDark, toggleTheme } = useDarkMode();
 
   return (
     <nav className="navbar">
@@ -42,6 +44,15 @@ const Navigation = () => {
           >
             Skills
           </Link>
+        </li>
+        <li>
+          <button
+            className={`theme-toggle-btn ${isDark ? 'dark' : 'light'}`}
+            onClick={toggleTheme}
+            aria-label="החלף ערכת צבעים"
+          >
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </li>
       </ul>
     </nav>

@@ -10,7 +10,7 @@
 }
 
 /* dark mood */
-/* :root {
+body.dark-mode {
   --primary: #dfe6e9;
   --navigation: #060b17;
   --background-image: radial-gradient(
@@ -25,7 +25,7 @@
   --text: white;
   --transition: all 0.3s ease;
   font-family: system-ui, -apple-system, sans-serif;
-} */
+}
 
 * {
   margin: 0;
