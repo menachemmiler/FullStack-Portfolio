@@ -1,13 +1,15 @@
 import { Menu, MessageSquare, Moon, Sun, X } from 'lucide-react';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useDarkMode } from '../../hooks/useTheme';
+import { toggleTheme } from '../../redux/slices/themeSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import './navigation.css';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const location = useLocation();
-  const { isDark, toggleTheme } = useDarkMode();
+  const { isDark } = useAppSelector((state) => state.theme);
+  const dispatch = useAppDispatch();
 
   return (
     <nav className="navbar">
@@ -48,7 +50,7 @@ const Navigation = () => {
         <li>
           <button
             className={`theme-toggle-btn ${isDark ? 'dark' : 'light'}`}
-            onClick={toggleTheme}
+            onClick={() => dispatch(toggleTheme())}
             aria-label="החלף ערכת צבעים"
           >
             {isDark ? <Sun size={18} /> : <Moon size={18} />}

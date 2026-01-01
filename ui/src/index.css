@@ -1,28 +1,43 @@
 :root {
-  --primary: #2d3436;
   --navigation: #feffff;
-  --secondary: #0984e3;
-  --accent: #00b894;
+  --secondary: #4f46e5;
+  --main-gradient: linear-gradient(to bottom right, #6366f1, #9333ea);
   --background: #f5f6fa;
   --text: #2d3436;
   --transition: all 0.3s ease;
   font-family: system-ui, -apple-system, sans-serif;
+
+  --background-image: radial-gradient(
+      circle at 35% 65%,
+      rgba(147, 51, 234, 0.45) 0%,
+      rgba(147, 51, 234, 0.1) 20%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 65% 35%,
+      rgba(79, 70, 229, 0.45) 0%,
+      rgba(79, 70, 229, 0.1) 20%,
+      transparent 45%
+    );
 }
 
 /* dark mood */
 body.dark-mode {
-  --primary: #dfe6e9;
   --navigation: #060b17;
   --background-image: radial-gradient(
-    circle at 50% 60%,
-    rgba(43, 42, 90, 0.45) 0%,
-    rgba(16, 23, 37, 0.1) 40%,
-    rgba(16, 23, 37, 0) 70%
-  );
-  --secondary: #74b9ff;
-  --accent: #55efc4;
-  --background: #101725;
-  --text: white;
+      circle at 35% 65%,
+      rgba(147, 51, 234, 0.45) 0%,
+      rgba(147, 51, 234, 0.1) 20%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 65% 35%,
+      rgba(79, 70, 229, 0.45) 0%,
+      rgba(79, 70, 229, 0.1) 20%,
+      transparent 45%
+    );
+  --background: #020617;
+  --text: #dfe6e9;
   --transition: all 0.3s ease;
   font-family: system-ui, -apple-system, sans-serif;
 }
@@ -67,7 +82,7 @@ body.dark-mode {
 }
 
 .button-primary {
-  background: var(--secondary);
+  background: var(--main-gradient);
   color: white;
 }
 

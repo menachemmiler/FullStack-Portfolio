@@ -1,13 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import userSlice from "./slices/userSlice";
-import projectsSlice from "./slices/projectSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
+import projectsSlice from './slices/projectSlice';
+import themeSlice from './slices/themeSlice';
+import userSlice from './slices/userSlice';
 
 const store = configureStore({
   reducer: {
     user: userSlice.reducer,
     projects: projectsSlice.reducer,
+    theme: themeSlice.reducer,
   },
 });
 

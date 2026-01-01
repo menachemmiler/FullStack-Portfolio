@@ -13,7 +13,7 @@
 .nav-logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--text);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@
   display: none;
   background: none;
   border: none;
-  color: var(--primary);
+  color: var(--text);
   cursor: pointer;
   z-index: 1001;
 }
@@ -83,7 +83,6 @@
     position: fixed;
     top: 0;
     right: 0;
-    background: white;
     overflow: hidden;
     opacity: 0;
     transition: width 0.4s ease, opacity 0.4s ease;
