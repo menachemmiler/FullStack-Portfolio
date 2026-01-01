@@ -5,11 +5,10 @@
 .page-projects {
   height: 100%; /* גובה כללי של עמוד הפרויקטים */
   width: 100%; /* רוחב מלא */
-}
-
-.page-projects > section {
-  height: 100%;
-  /* width: 100%; */
+  display: flex; /* יישור באמצעות Flexbox */
+  justify-content: center; /* מיקום באמצע אופקי */
+  align-items: center; /* מיקום באמצע אנכי */
+  flex-direction: column; /* העמדת אלמנטים אחד מתחת לשני */
 }
 
 .projects-section {
