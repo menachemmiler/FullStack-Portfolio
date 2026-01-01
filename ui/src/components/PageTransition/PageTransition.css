@@ -1,4 +1,9 @@
 .page-transition {
   height: 92%;
   width: 100%;
+  /* מאפשר גלילה רק בתוך הדף הנוכחי */
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* הופך את הגלילה לחלקה יותר בניידים */
+  -webkit-overflow-scrolling: touch;
 }
