@@ -1,9 +1,14 @@
 import { Mail } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import PageTransition from '../../components/PageTransition/PageTransition';
 import './skills.css';
 
 const Skills = () => (
   <PageTransition>
+    <Helmet>
+      <title>מנחם מילר - מיומנויות</title>
+      <meta name="description" content="המיומנויות והניסיון שלי בפיתוח אתרים ואפליקציות ווב..." />
+    </Helmet>
     <div className="page-skills">
       <section className="skills-section">
         <div className="skills-content">

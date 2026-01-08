@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import loading from '../../assets/loading.gif';
 import PageTransition from '../../components/PageTransition/PageTransition';
@@ -11,6 +12,10 @@ const Projects = () => {
 
   return (
     <PageTransition>
+      <Helmet>
+        <title>מנחם מילר - פרויקטים</title>
+        <meta name="description" content="כאן תוכלו לראות את כל הפרויקטים שבניתי..." />
+      </Helmet>
       <div className="page-projects">
         <section className="projects-section">
           {status === DataStatus.LOADING && <img src={loading} alt="Loading..." />}

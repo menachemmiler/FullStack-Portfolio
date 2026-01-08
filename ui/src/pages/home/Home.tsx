@@ -1,4 +1,5 @@
 import { ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import PageTransition from '../../components/PageTransition/PageTransition';
 import { useAppSelector } from '../../redux/store';
@@ -10,6 +11,13 @@ const Home = () => {
   return (
     <PageTransition>
       <div className="main">
+        <Helmet>
+          <title>מנחם מילר - פיתוח אתרים</title>
+          <meta
+            name="description"
+            content="מנחם מילר – פיתוח אתרים ואפליקציות ווב בהתאמה אישית, קוד נקי ופתרונות יציבים שמותאמים לצרכים אמיתיים של לקוחות."
+          />
+        </Helmet>
         <section className="home">
           <div className="avatar-container">
             <div className={`avatar-inner ${isDark ? 'dark' : 'light'}`}>
