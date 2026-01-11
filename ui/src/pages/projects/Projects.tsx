@@ -24,7 +24,7 @@ const Projects = () => {
             <>
               <div className="projects-flex">
                 <div className="projects-flex-top">
-                  <h2>My Projects</h2>
+                  <h1>My Projects</h1>
                   <h4>
                     A collection of my recent work. Each project is built with attention to detail
                     and a commitment to quality.
