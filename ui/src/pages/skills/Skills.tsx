@@ -12,7 +12,7 @@ const Skills = () => (
     <div className="page-skills">
       <section className="skills-section">
         <div className="skills-content">
-          <h2>Skills and Experience</h2>
+          <h1>Skills and Experience</h1>
           <p>The technologies and tools I use to build advanced digital solutions</p>
           <div className="skills-grid">
             <div className="skill-card">
