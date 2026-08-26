@@ -69,13 +69,12 @@ body.dark-mode .projects-section h1 {
   border-radius: 16px; /* פינות מעוגלות */
   overflow: hidden; /* למנוע יציאה של תמונה מהקופסה */
   cursor: pointer; /* סמן של לחיץ */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* צל בסיסי */
+  box-shadow: var(--shadow-project-card); 
   transition: transform 0.3s, box-shadow 0.3s; /* אנימציית מעבר */
 }
 
 .project-card:hover {
   transform: translateY(-4px); /* עלייה קלה בהובר */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* צל עמוק יותר בהובר */
 }
 
 /* Background Image — תמונת רקע של הכרטיס */
