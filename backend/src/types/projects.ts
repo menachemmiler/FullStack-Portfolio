@@ -1,12 +1,3 @@
-export interface ProjectData {
-  title: string;
-  description: string;
-  fullDescription: string;
-  image: string;
-  backendLink: string;
-  liveLink?: string;
-}
-
 export interface IProject extends Document {
   title: string;
   description: string;

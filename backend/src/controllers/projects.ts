@@ -7,7 +7,7 @@ import {
   seedCreateProjectsService,
   updateProjectService,
 } from "../services/projects";
-import { IProject, ProjectData } from "../types/projects";
+import { IProject, IProjectDTO } from "../types/projects";
 
 export const createNewProject = async (req: Request, res: Response) => {
   try {
@@ -32,29 +32,34 @@ export const getAllProjects = async (req: Request, res: Response) => {
   }
 };
 
-const listProjects: ProjectData[] = [
+const listProjects = [
   {
-    title: "project 1",
-    description: "short description",
-    fullDescription: "long description",
-    image: "image",
-    liveLink: "link",
-    backendLink: "link",
+    title: "Led Plus",
+    description:
+      "E-commerce and showcase website for professional lighting fixtures and electrical equipment.",
+    fullDescription:
+      "Assisted in finalizing website development, UI/UX adjustments, and successfully executed full Google indexing and Search Console integration. The platform is live and actively serving customers.",
+    image: "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk4U-12sfjTKN4ODOvgVFKw2aYAJWKuIW5jH-OFAUn4UkEDOeDCeJ6n0h5LgAAVaPgtM4afUL-3oD5A0tDcSsGKgx2hpFi09ezmpJYwVPA4fgUS7nODeviA1K_k9yypXPRBBmjv=w115-h115-n-k-no",
+    backendLink: " https://ledplus.co.il/wp-admin",
+    liveLink: "https://ledplus.co.il",
   },
   {
-    title: "project 2",
-    description: "short description",
-    fullDescription: "long description",
-    image: "image",
-    liveLink: "link",
-    backendLink: "link",
+    title: "Global Cyber Attacks Analytics Dashboard",
+    description:
+      "A data visualization platform for monitoring, reporting, and analyzing global cyber attack trends, geographic hotspots, and threat metrics.",
+    fullDescription:
+      "Interactive analytics dashboard built to visualize cyber security incidents. Features data aggregation by date, region, and attack vectors using interactive charts and geographic maps, alongside a management system for updating new incident logs.",
+    image: "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWk4U-12sfjTKN4ODOvgVFKw2aYAJWKuIW5jH-OFAUn4UkEDOeDCeJ6n0h5LgAAVaPgtM4afUL-3oD5A0tDcSsGKgx2hpFi09ezmpJYwVPA4fgUS7nODeviA1K_k9yypXPRBBmjv=w115-h115-n-k-no",
+    backendLink: "https://attacks-client.onrender.com",
+    githubAll: "sdv",
+    liveLink: "https://attacks-client.onrender.com",
   },
 ];
 
 export const seedTocreateProjects = async (_req: Request, res: Response) => {
   try {
     const newProjects = await seedCreateProjectsService(
-      listProjects as IProject[]
+      listProjects as IProject[],
     );
     res.status(201).json(newProjects);
   } catch (err: any) {

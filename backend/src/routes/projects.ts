@@ -13,11 +13,17 @@ const router = Router();
 
 router.get("/", getAllProjects);
 
-router.post("/", verifyUser, upload.single("image"), createNewProject);
+// router.post("/", verifyUser, upload.single("image"), createNewProject);
 
-router.put("", verifyUser, updateProject);
+// router.put("", verifyUser, updateProject);
 
-router.delete("/:id", verifyUser, deleteProject);
+// router.delete("/:id", verifyUser, deleteProject);
+
+router.post("/", upload.single("image"), createNewProject);
+
+router.put("", updateProject);
+
+router.delete("/:id", deleteProject);
 
 router.post("/seed", seedTocreateProjects); // בשביל סביבת פיתוח
 
